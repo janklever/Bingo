@@ -1,10 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import Celebration from '../components/Celebration';
+
 
 export default function Card() {
   const { gameId } = useParams();
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
 
   const [playerCard, setPlayerCard] = useState(null);
   const [cardNumber, setCardNumber] = useState(1);
@@ -216,7 +220,7 @@ export default function Card() {
 
     // Full Bingo Check (priority)
     if (marked.length === 25 && !completed.includes('bingo')) {
-      wins.push({ key: 'bingo', title: 'BINGO!', sub: 'Cartela completa!' });
+      wins.push({ key: 'bingo', title: 'BINGO!', sub: t('card.full_card') });
     }
 
     // Only check rows/columns if the card is not fully completed right now
@@ -228,7 +232,7 @@ export default function Card() {
           !completed.includes(key) &&
           [0, 1, 2, 3, 4].map((c) => r * 5 + c).every((i) => marked.includes(i))
         ) {
-          wins.push({ key, title: 'BINGO!', sub: `Linha ${r + 1} completa! 🎉` });
+          wins.push({ key, title: 'BINGO!', sub: t('card.wins_indicator_row', { number: r + 1 }) });
         }
       }
 
@@ -239,7 +243,7 @@ export default function Card() {
           !completed.includes(key) &&
           [0, 1, 2, 3, 4].map((r) => r * 5 + c).every((i) => marked.includes(i))
         ) {
-          wins.push({ key, title: 'BINGO!', sub: `Coluna ${c + 1} completa! 🎉` });
+          wins.push({ key, title: 'BINGO!', sub: t('card.wins_indicator_col', { number: c + 1 }) });
         }
       }
     }
@@ -265,6 +269,7 @@ export default function Card() {
     setCelebrationData({ ...wins[0], confettiData });
     playCelebrationSound(wins[0].key === 'bingo');
   };
+
 
   const checkInLine = (idx) => {
     return completedLines.some((k) => {
@@ -318,35 +323,38 @@ export default function Card() {
   }, [gameId, playerCard, markedCells]);
 
   const handleChangeCode = () => {
-    const confirm = window.confirm("Deseja trocar o código do sorteio? O progresso da sua cartela atual será perdido.");
+    const confirm = window.confirm(t('card.confirm_change_code'));
     if (confirm) {
       localStorage.removeItem('game_id');
       navigate('/cartela');
     }
   };
 
+
   const markedCount = markedCells.filter((idx) => idx !== 12).length;
   const winsCount = completedLines.length;
   const hasWins = winsCount > 0;
-  const winsLabel = winsCount === 1 ? 'sorteio' : 'sorteios';
-  const winsPlural = winsCount === 1 ? '' : 's';
+  const winsText = winsCount === 1
+    ? t('card.wins_indicator_one', { count: winsCount })
+    : t('card.wins_indicator_other', { count: winsCount });
   const formattedCardNumber = String(cardNumber).padStart(3, '0');
+
 
   if (!gameId) {
     return (
       <div className="card-container code-entry-container">
         <button id="btn-cartela-voltar-inicio" className="btn-back" onClick={() => navigate('/')}>
-          ← Voltar
+          ← {t('global.back')}
         </button>
 
         <div className="card-header">
-          <h1>BINGO</h1>
-          <div className="card-number">Entrar no Jogo</div>
+          <h1>{t('global.bingo')}</h1>
+          <div className="card-number">{t('card.enter_game')}</div>
         </div>
 
         <form className="code-entry-card" onSubmit={handleSubmitCode}>
-          <h2>Código do sorteio</h2>
-          <p>Digite o código de 6 caracteres do sorteio para receber sua cartela:</p>
+          <h2>{t('card.draw_code')}</h2>
+          <p>{t('card.enter_code_desc')}</p>
 
           <div className="otp-inputs">
             {codeInputs.map((val, idx) => (
@@ -372,21 +380,22 @@ export default function Card() {
             className="btn-submit-code"
             disabled={codeInputs.some((c) => !c)}
           >
-            Acessar cartela
+            {t('card.btn_access_card')}
           </button>
         </form>
       </div>
     );
   }
 
+
   return (
     <div className="card-container">
       <div className="card-header">
         <div className="game-info">
-          <div className="game-label">Bingo</div>
+          <div className="game-label">{t('global.bingo')}</div>
           <div className="game-id">{gameId}</div>
         </div>
-        <div className="card-number">Cartela Nº {formattedCardNumber}</div>
+        <div className="card-number">{t('card.card_number', { number: formattedCardNumber })}</div>
       </div>
 
       {playerCard && (
@@ -419,7 +428,7 @@ export default function Card() {
                   onClick={() => handleMarkCell(idx)}
                 >
                   {isFree ? (
-                    <span className="cell-free-text">LIVRE</span>
+                    <span className="cell-free-text">{t('card.free_cell')}</span>
                   ) : (
                     <span className={`cell-number-text ${num >= 10 ? 'double-digit' : ''}`}>
                       {num}
@@ -437,18 +446,18 @@ export default function Card() {
           onClick={handleSwapCard}
           className="btn-new-card"
         >
-          Trocar minha cartela
+          {t('card.btn_new_card')}
         </button>
       ) : (
         <div className="stats-panel">
           <span className="marked-count">
-            {markedCount} pedras marcadas
+            {markedCount === 1 ? t('card.marked_count_one', { count: markedCount }) : t('card.marked_count_other', { count: markedCount })}
           </span>
           {hasWins && (
             <>
               <span className="separator">•</span>
               <span className="wins-indicator">
-                {markedCount === 24 ? "Cartela completa! 🏆" : `${winsCount} ${winsLabel} completo${winsPlural}`}
+                {markedCount === 24 ? t('card.full_card') : winsText}
               </span>
             </>
           )}
@@ -456,7 +465,7 @@ export default function Card() {
       )}
 
       <button className="btn-change-code" onClick={handleChangeCode}>
-        Novo código
+        {t('card.btn_change_code')}
       </button>
 
       <Celebration
@@ -467,23 +476,23 @@ export default function Card() {
       {showInstructionModal && (
         <div className="instruction-modal-overlay" onClick={() => setShowInstructionModal(false)}>
           <div className="instruction-modal" onClick={(e) => e.stopPropagation()}>
-            <h2>Como jogar</h2>
+            <h2>{t('card.how_to_play')}</h2>
             <div className="instruction-steps">
               <div className="instruction-step">
                 <span className="instruction-icon">📢</span>
-                <p>Aguarde os números serem sorteados.</p>
+                <p>{t('card.step1')}</p>
               </div>
               <div className="instruction-step">
                 <span className="instruction-icon">👆</span>
-                <p>Toque no número na sua cartela para marcá-lo.</p>
+                <p>{t('card.step2')}</p>
               </div>
               <div className="instruction-step">
                 <span className="instruction-icon">🎉</span>
-                <p>Complete uma linha, coluna ou toda a cartela para ganhar!</p>
+                <p>{t('card.step3')}</p>
               </div>
             </div>
             <button className="btn-dismiss-instructions" onClick={() => setShowInstructionModal(false)}>
-              Entendi
+              {t('card.btn_dismiss')}
             </button>
           </div>
         </div>
@@ -491,3 +500,4 @@ export default function Card() {
     </div>
   );
 }
+

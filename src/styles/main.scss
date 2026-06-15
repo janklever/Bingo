@@ -5,6 +5,8 @@
 @use 'caller';
 @use 'card';
 @use 'celebration';
+@use 'languages';
+
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -18,11 +20,14 @@ body {
 }
 
 .app-wrapper {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
   background: variables.$primary-bg;
   position: relative;
   overflow-x: hidden;
   margin: 0 auto;
 }
+
 
 

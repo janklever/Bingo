@@ -1,6 +1,8 @@
-import React from 'react';
+
+import { useTranslation } from 'react-i18next';
 
 export default function Celebration({ celebrationData, onDismiss }) {
+  const { t } = useTranslation();
   if (!celebrationData) return null;
   const { title, sub, confettiData } = celebrationData;
 
@@ -25,8 +27,9 @@ export default function Celebration({ celebrationData, onDismiss }) {
       <div className="celebration-content">
         <div className="celeb-title">{title}</div>
         <div className="celeb-sub">{sub}</div>
-        <div className="dismiss-hint">Toque para continuar</div>
+        <div className="dismiss-hint">{t('celebration.dismiss_hint')}</div>
       </div>
     </div>
   );
 }
+

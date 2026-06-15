@@ -1,0 +1,70 @@
+{
+  "global": {
+    "back": "Back",
+    "bingo": "Bingo",
+    "online": "Online",
+    "game_code": "Game code",
+    "created_by": "Created by"
+  },
+  "home": {
+    "organizer_title": "Organizer",
+    "organizer_desc": "Share the QR Code with participants and start the draw.",
+    "participant_title": "Participant",
+    "participant_desc": "Scan the QR Code or type the game code to receive your unique card.",
+    "winner_title": "Winner",
+    "winner_desc": "Stay tuned, when you complete a row or column shout: ",
+    "winner_bold": "BINGO!",
+    "btn_organizer": "I am an organizer →",
+    "btn_participant": "I am a participant →"
+  },
+  "setup": {
+    "title": "New Draw",
+    "subtitle": "Scan the QR Code to join",
+    "confirm_new": "Do you want to start a new draw? The progress of the previous draw will be lost.",
+    "qr_alt": "Card QR Code",
+    "info": "Each scanning participant will receive a unique and random card. Please wait before starting.",
+    "btn_continue": "Continue draw →",
+    "btn_start": "Start draw →",
+    "btn_start_new": "Start a new one"
+  },
+  "caller": {
+    "btn_show_qr": "Show QR code",
+    "last_ball": "Last Ball",
+    "press_draw": "Press\nDraw",
+    "drawn_numbers": "Drawn Balls — {{count}}/75",
+    "no_drawn_yet": "No balls drawn yet",
+    "all_drawn": "All balls drawn!",
+    "spinning": "Mixing…",
+    "draw_ball": "Draw ball",
+    "modal_title": "Join the Game",
+    "modal_desc": "Scan the QR Code below with your phone's camera to receive your card.",
+    "copied": "Copied!",
+    "copy_link": "Copy link"
+  },
+  "card": {
+    "card_number": "Card No. {{number}}",
+    "enter_game": "Join the Game",
+    "draw_code": "Draw code",
+    "enter_code_desc": "Enter the 6-character draw code to get your card:",
+    "btn_access_card": "Get card",
+    "free_cell": "FREE",
+    "btn_new_card": "Swap my card",
+    "marked_count_one": "{{count}} marked ball",
+    "marked_count_other": "{{count}} marked balls",
+    "full_card": "Full card! 🏆",
+    "wins_indicator_row": "Row {{number}} completed! 🎉",
+    "wins_indicator_col": "Column {{number}} completed! 🎉",
+    "wins_indicator_one": "{{count}} completed line or column",
+    "wins_indicator_other": "{{count}} completed lines or columns",
+    "btn_change_code": "New code",
+    "confirm_change_code": "Do you want to change the draw code? The progress of your current card will be lost.",
+    "how_to_play": "How to play",
+    "step1": "Wait for numbers to be drawn.",
+    "step2": "Tap the number on your card to mark it.",
+    "step3": "Complete a row, column, or the entire card to win!",
+    "btn_dismiss": "Got it"
+  },
+  "celebration": {
+    "dismiss_hint": "Tap to continue"
+  }
+}

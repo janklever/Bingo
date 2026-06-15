@@ -1,9 +1,10 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import BingoGlobe from '../components/BingoGlobe';
+import { useTranslation } from 'react-i18next';
+
 
 export default function Home() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleGoToSetup = () => {
     navigate('/sorteio');
@@ -16,42 +17,45 @@ export default function Home() {
   return (
     <div className="home-container">
       <div className="home-header">
-        <h1>BINGO</h1>
-        <p>Online</p>
+        <h1>{t('global.bingo')}</h1>
+        <p>{t('global.online')}</p>
       </div>
 
       <div className="home-steps">
         <div className="step-card">
           <h3>
             <i>1</i>
-            <span>Organizador</span>
+            <span>{t('home.organizer_title')}</span>
           </h3>
-          <p>Compartilhe o QR Code com os participantes e inicie o sorteio.</p>
+          <p>{t('home.organizer_desc')}</p>
         </div>
         <div className="step-card">
           <h3>
             <i>2</i>
-            <span>Participante</span>
+            <span>{t('home.participant_title')}</span>
           </h3>
-          <p>Escaneie o QR Code ou digite o código do sorteio para receber sua cartela única.</p>
+          <p>{t('home.participant_desc')}</p>
         </div>
         <div className="step-card">
           <h3>
             <i>3</i>
-            <span>Ganhador</span>
+            <span>{t('home.winner_title')}</span>
           </h3>
-          <p>Fique atendo, ao completar uma linha ou coluna grite: <strong>BINGO!</strong></p>
+          <p>
+            {t('home.winner_desc')}<strong>{t('home.winner_bold')}</strong>
+          </p>
         </div>
       </div>
 
       <div className="home-actions">
         <button id="btn-sou-organizador" className="btn-primary" onClick={handleGoToSetup}>
-          Sou organizador →
+          {t('home.btn_organizer')}
         </button>
         <button id="btn-ver-minha-cartela" className="btn-secondary" onClick={handleGoToCard}>
-          Sou participante →
+          {t('home.btn_participant')}
         </button>
       </div>
     </div>
   );
 }
+

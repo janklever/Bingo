@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export default function Setup() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [gameId, setGameId] = useState(() => {
     return localStorage.getItem('game_id') || Math.random().toString(36).slice(2, 8).toUpperCase();
   });
@@ -32,7 +34,7 @@ export default function Setup() {
   };
 
   const handleStartNew = () => {
-    const confirm = window.confirm("Deseja iniciar um novo sorteio? O progresso do sorteio anterior será perdido.");
+    const confirm = window.confirm(t('setup.confirm_new'));
     if (confirm) {
       const newId = Math.random().toString(36).slice(2, 8).toUpperCase();
       setGameId(newId);
@@ -44,11 +46,11 @@ export default function Setup() {
   return (
     <div className="setup-container">
       <button id="btn-sorteio-voltar-inicio" className="btn-back" onClick={handleGoToHome}>
-        ← Voltar
+        ← {t('global.back')}
       </button>
 
-      <h2>Novo sorteio</h2>
-      <p className="setup-subtitle">Leia o QR Code para participar</p>
+      <h2>{t('setup.title')}</h2>
+      <p className="setup-subtitle">{t('setup.subtitle')}</p>
 
       <div className="qr-card">
         {qrCodeUrl && (
@@ -57,30 +59,31 @@ export default function Setup() {
             width={200}
             height={200}
             className="qr-image"
-            alt="QR Code da cartela"
+            alt={t('setup.qr_alt')}
           />
         )}
         <div className="game-code-container">
-          <p>Código do jogo</p>
+          <p>{t('global.game_code')}</p>
           <p className="game-id">{gameId}</p>
         </div>
       </div>
 
       <p className="setup-info">
-        Cada participante que escanear receberá uma cartela única e aleatória. Aguarde antes de iniciar.
+        {t('setup.info')}
       </p>
 
       <div className="setup-actions" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
         <button id="btn-iniciar-sorteio" className="btn-start" onClick={handleGoToCaller}>
-          {isExistingGame ? 'Continuar sorteio →' : 'Iniciar sorteio →'}
+          {isExistingGame ? t('setup.btn_continue') : t('setup.btn_start')}
         </button>
 
         {isExistingGame && (
           <button id="btn-novo-sorteio" className="btn-secondary-setup" onClick={handleStartNew}>
-            Iniciar um novo
+            {t('setup.btn_start_new')}
           </button>
         )}
       </div>
     </div>
   );
 }
+

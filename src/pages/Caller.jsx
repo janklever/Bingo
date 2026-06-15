@@ -1,6 +1,8 @@
-import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import BingoGlobe from '../components/BingoGlobe';
+
 
 function getLetterOf(num) {
   if (num <= 0) return 'N';
@@ -14,9 +16,11 @@ function getLetterOf(num) {
 export default function Caller() {
   const { gameId } = useParams();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const [drawnNumbers, setDrawnNumbers] = useState([]);
   const [lastDrawn, setLastDrawn] = useState(null);
+
   const [isGlobeSpinning, setIsGlobeSpinning] = useState(false);
   const [flyOffset, setFlyOffset] = useState({ x: 0, y: 0 });
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -153,30 +157,31 @@ export default function Caller() {
   const drawDisabled = drawnNumbers.length >= 75 || isGlobeSpinning;
   const drawLabel =
     drawnNumbers.length >= 75
-      ? 'Todas as pedras sorteadas!'
+      ? t('caller.all_drawn')
       : isGlobeSpinning
-        ? 'Misturando…'
-        : 'Sortear pedra';
+        ? t('caller.spinning')
+        : t('caller.draw_ball');
+
 
   return (
     <div className="caller-container">
       <div className="caller-header">
         <button id="btn-sortador-voltar-qrcode" className="btn-back-qr" onClick={handleGoToSetup}>
-          ← Voltar
+          ← {t('global.back')}
         </button>
         <div className="game-info">
-          <div className="game-label">Bingo</div>
+          <div className="game-label">{t('global.bingo')}</div>
           <div className="game-id">{gameId}</div>
         </div>
         <button id="btn-ver-qrcode" className="btn-show-qr" onClick={() => setIsModalOpen(true)}>
-          Ver QR code
+          {t('caller.btn_show_qr')}
         </button>
       </div>
 
       <div className="caller-main-section">
         <BingoGlobe ref={globeRef} width={188} height={240} isSpinning={isGlobeSpinning} />
         <div className="last-ball-section">
-          <div className="last-ball-label">Última Pedra</div>
+          <div className="last-ball-label">{t('caller.last_ball')}</div>
           <div ref={slotRef} style={{ width: 130, height: 130, margin: '0 auto', position: 'relative' }}>
             {lastDrawn ? (
               <div
@@ -194,7 +199,7 @@ export default function Caller() {
               </div>
             ) : (
               <div className="last-ball-empty">
-                <span>{`Pressione\nSortear`}</span>
+                <span>{t('caller.press_draw')}</span>
               </div>
             )}
           </div>
@@ -202,7 +207,7 @@ export default function Caller() {
       </div>
 
       <div className="history-panel">
-        <div className="history-title">Pedras Sorteadas — {drawnNumbers.length}/75</div>
+        <div className="history-title">{t('caller.drawn_numbers', { count: drawnNumbers.length })}</div>
         {drawnNumbers.length > 0 ? (
           <div className="history-list">
             {drawnNumbers.map((num, i) => {
@@ -221,7 +226,7 @@ export default function Caller() {
             })}
           </div>
         ) : (
-          <p className="history-empty">Nenhuma pedra sorteada ainda</p>
+          <p className="history-empty">{t('caller.no_drawn_yet')}</p>
         )}
       </div>
 
@@ -240,8 +245,8 @@ export default function Caller() {
             <button className="btn-close-modal" onClick={() => setIsModalOpen(false)}>
               &times;
             </button>
-            <h2>Entrar no jogo</h2>
-            <p>Escaneie o QR Code abaixo com a câmera do seu celular para receber sua cartela.</p>
+            <h2>{t('caller.modal_title')}</h2>
+            <p>{t('caller.modal_desc')}</p>
 
             <div className="qr-code-wrapper">
               <img
@@ -249,12 +254,12 @@ export default function Caller() {
                 width={200}
                 height={200}
                 className="qr-image"
-                alt="QR Code da cartela"
+                alt={t('setup.qr_alt')}
               />
             </div>
 
             <div className="game-id-badge">
-              <p>Código do jogo</p>
+              <p>{t('global.game_code')}</p>
               <p className="game-id">{gameId}</p>
             </div>
 
@@ -264,7 +269,7 @@ export default function Caller() {
                 className={`btn-copy-link ${copied ? 'copied' : ''}`}
                 onClick={handleCopyLink}
               >
-                {copied ? 'Copiado!' : 'Copiar link'}
+                {copied ? t('caller.copied') : t('caller.copy_link')}
               </button>
             </div>
           </div>
@@ -273,4 +278,5 @@ export default function Caller() {
     </div>
   );
 }
+
 

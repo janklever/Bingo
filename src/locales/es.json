@@ -1,0 +1,70 @@
+{
+  "global": {
+    "back": "Volver",
+    "bingo": "Bingo",
+    "online": "En línea",
+    "game_code": "Código del juego",
+    "created_by": "Creado por"
+  },
+  "home": {
+    "organizer_title": "Organizador",
+    "organizer_desc": "Comparte el código QR con los participantes y comienza el sorteo.",
+    "participant_title": "Participante",
+    "participant_desc": "Escanea el o escribe el código para recibir tu cartón único.",
+    "winner_title": "Ganador",
+    "winner_desc": "Mantente atento, al completar una fila o columna grita: ",
+    "winner_bold": "¡BINGO!",
+    "btn_organizer": "Soy organizador →",
+    "btn_participant": "Soy participante →"
+  },
+  "setup": {
+    "title": "Nuevo sorteo",
+    "subtitle": "Escanea el código QR para participar",
+    "confirm_new": "¿Deseas iniciar un nuevo sorteo? Se perderá el progreso del sorteo anterior.",
+    "qr_alt": "Código QR del cartón",
+    "info": "Cada participante que escanee recibirá un cartón único y aleatorio. Espera antes de comenzar.",
+    "btn_continue": "Continuar sorteo →",
+    "btn_start": "Iniciar sorteo →",
+    "btn_start_new": "Iniciar uno nuevo"
+  },
+  "caller": {
+    "btn_show_qr": "Ver código QR",
+    "last_ball": "Última Bola",
+    "press_draw": "Presiona\nSortear",
+    "drawn_numbers": "Bolas Sorteadas — {{count}}/75",
+    "no_drawn_yet": "Ninguna bola sorteada todavía",
+    "all_drawn": "¡Todas las bolas sorteadas!",
+    "spinning": "Mezclando…",
+    "draw_ball": "Sortear bola",
+    "modal_title": "Entrar al juego",
+    "modal_desc": "Escanea el código QR de abajo con la cámara de tu celular para recibir tu cartón.",
+    "copied": "¡Copiado!",
+    "copy_link": "Copiar enlace"
+  },
+  "card": {
+    "card_number": "Cartón Nº {{number}}",
+    "enter_game": "Entrar al Juego",
+    "draw_code": "Código del sorteo",
+    "enter_code_desc": "Escribe el código de 6 caracteres del sorteo para recibir tu cartón:",
+    "btn_access_card": "Obtener cartón",
+    "free_cell": "LIBRE",
+    "btn_new_card": "Cambiar mi cartón",
+    "marked_count_one": "{{count}} bola marcada",
+    "marked_count_other": "{{count}} bolas marcadas",
+    "full_card": "¡Cartón completo! 🏆",
+    "wins_indicator_row": "¡Fila {{number}} completa! 🎉",
+    "wins_indicator_col": "¡Columna {{number}} completa! 🎉",
+    "wins_indicator_one": "{{count}} línea o columna completa",
+    "wins_indicator_other": "{{count}} líneas o columnas completas",
+    "btn_change_code": "Nuevo código",
+    "confirm_change_code": "¿Deseas cambiar el código del sorteo? Se perderá el progreso de tu cartón actual.",
+    "how_to_play": "Cómo jugar",
+    "step1": "Espera a que se sorteen los números.",
+    "step2": "Toca el número en tu cartón para marcarlo.",
+    "step3": "¡Completa una fila, columna o todo el cartón para ganar!",
+    "btn_dismiss": "Entendido"
+  },
+  "celebration": {
+    "dismiss_hint": "Toca para continuar"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "global": {
+    "back": "Voltar",
+    "bingo": "Bingo",
+    "online": "Online",
+    "game_code": "Código do jogo",
+    "created_by": "Criado por"
+  },
+  "home": {
+    "organizer_title": "Organizador",
+    "organizer_desc": "Compartilhe o QR Code com os participantes e inicie o sorteio.",
+    "participant_title": "Participante",
+    "participant_desc": "Escaneie ou digite o código para receber sua cartela única.",
+    "winner_title": "Ganhador",
+    "winner_desc": "Fique atento, ao completar uma linha ou coluna grite: ",
+    "winner_bold": "BINGO!",
+    "btn_organizer": "Sou organizador →",
+    "btn_participant": "Sou participante →"
+  },
+  "setup": {
+    "title": "Novo sorteio",
+    "subtitle": "Leia o QR Code para participar",
+    "confirm_new": "Deseja iniciar um novo sorteio? O progresso do sorteio anterior será perdido.",
+    "qr_alt": "QR Code da cartela",
+    "info": "Cada participante que escanear receberá uma cartela única e aleatória. Aguarde antes de iniciar.",
+    "btn_continue": "Continuar sorteio →",
+    "btn_start": "Iniciar sorteio →",
+    "btn_start_new": "Iniciar um novo"
+  },
+  "caller": {
+    "btn_show_qr": "Ver QR code",
+    "last_ball": "Última Pedra",
+    "press_draw": "Pressione\nSortear",
+    "drawn_numbers": "Pedras Sorteadas — {{count}}/75",
+    "no_drawn_yet": "Nenhuma pedra sorteada ainda",
+    "all_drawn": "Todas as pedras sorteadas!",
+    "spinning": "Misturando…",
+    "draw_ball": "Sortear pedra",
+    "modal_title": "Entrar no jogo",
+    "modal_desc": "Escaneie o QR Code abaixo com a câmera do seu celular para receber sua cartela.",
+    "copied": "Copiado!",
+    "copy_link": "Copiar link"
+  },
+  "card": {
+    "card_number": "Cartela Nº {{number}}",
+    "enter_game": "Entrar no Jogo",
+    "draw_code": "Código do sorteio",
+    "enter_code_desc": "Digite o código de 6 caracteres do sorteio para receber sua cartela:",
+    "btn_access_card": "Acessar cartela",
+    "free_cell": "LIVRE",
+    "btn_new_card": "Trocar minha cartela",
+    "marked_count_one": "{{count}} pedra marcada",
+    "marked_count_other": "{{count}} pedras marcadas",
+    "full_card": "Cartela completa! 🏆",
+    "wins_indicator_row": "Linha {{number}} completa! 🎉",
+    "wins_indicator_col": "Coluna {{number}} completa! 🎉",
+    "wins_indicator_one": "{{count}} linha ou coluna completa",
+    "wins_indicator_other": "{{count}} linhas ou colunas completas",
+    "btn_change_code": "Novo código",
+    "confirm_change_code": "Deseja trocar o código do sorteio? O progresso da sua cartela atual será perdido.",
+    "how_to_play": "Como jogar",
+    "step1": "Aguarde os números serem sorteados.",
+    "step2": "Toque no número na sua cartela para marcá-lo.",
+    "step3": "Complete uma linha, coluna ou toda a cartela para ganhar!",
+    "btn_dismiss": "Entendi"
+  },
+  "celebration": {
+    "dismiss_hint": "Toque para continuar"
+  }
+}
