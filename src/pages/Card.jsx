@@ -255,24 +255,6 @@ export default function Card() {
       <div className="card-header">
         <h1>BINGO</h1>
         <div className="card-number">Cartela Nº {formattedCardNumber}</div>
-        {markedCount === 0 && (
-          <button
-            onClick={handleSwapCard}
-            style={{
-              marginTop: '10px',
-              background: 'rgba(255, 255, 255, 0.1)',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-              borderRadius: '8px',
-              padding: '6px 12px',
-              color: '#fff',
-              fontSize: '13px',
-              cursor: 'pointer',
-              fontFamily: "'Baloo 2', sans-serif"
-            }}
-          >
-            🔄 Gerar nova cartela
-          </button>
-        )}
       </div>
 
       {playerCard && (
@@ -319,11 +301,32 @@ export default function Card() {
       )}
 
       <div className="stats-panel">
-        <span className="marked-count">{markedCount} pedras marcadas</span>
-        {hasWins && (
-          <span className="wins-indicator">
-            · {winsCount} {winsLabel} completa{winsPlural}
-          </span>
+        {markedCount === 0 ? (
+          <button
+            onClick={handleSwapCard}
+            style={{
+              background: 'rgba(255, 255, 255, 0.1)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              borderRadius: '8px',
+              padding: '8px 16px',
+              color: '#fff',
+              fontSize: '14px',
+              fontWeight: '600',
+              cursor: 'pointer',
+              fontFamily: "'Baloo 2', sans-serif"
+            }}
+          >
+            🔄 Gerar nova cartela
+          </button>
+        ) : (
+          <>
+            <span className="marked-count">{markedCount} pedras marcadas</span>
+            {hasWins && (
+              <span className="wins-indicator">
+                · {winsCount} {winsLabel} completa{winsPlural}
+              </span>
+            )}
+          </>
         )}
       </div>
 
