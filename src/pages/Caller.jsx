@@ -93,8 +93,23 @@ export default function Caller() {
     playDrawSound();
   };
 
+  useEffect(() => {
+    const handleBeforeUnload = (e) => {
+      e.preventDefault();
+      e.returnValue = "Deseja sair do sorteio? O progresso deste jogo será perdido.";
+      return e.returnValue;
+    };
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
+
   const handleGoToSetup = () => {
-    navigate('/sorteio');
+    const confirmLeave = window.confirm("Deseja sair do sorteio? O progresso deste jogo será perdido.");
+    if (confirmLeave) {
+      navigate('/sorteio');
+    }
   };
 
   const drawDisabled = drawnNumbers.length >= 75 || isGlobeSpinning;

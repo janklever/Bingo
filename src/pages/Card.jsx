@@ -235,8 +235,23 @@ export default function Card() {
     setCelebrationData(null);
   };
 
+  useEffect(() => {
+    const handleBeforeUnload = (e) => {
+      e.preventDefault();
+      e.returnValue = "Deseja sair do jogo? O progresso da sua cartela será perdido.";
+      return e.returnValue;
+    };
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
+
   const handleGoToHome = () => {
-    navigate('/');
+    const confirmLeave = window.confirm("Deseja sair do jogo? O progresso da sua cartela será perdido.");
+    if (confirmLeave) {
+      navigate('/');
+    }
   };
 
   const markedCount = markedCells.filter((idx) => idx !== 12).length;
