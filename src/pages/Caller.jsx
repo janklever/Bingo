@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import BingoGlobe from '../components/BingoGlobe';
 
 function getLetterOf(num) {
-  if (num <= 0)  return 'N';
+  if (num <= 0) return 'N';
   if (num <= 15) return 'B';
   if (num <= 30) return 'I';
   if (num <= 45) return 'N';
@@ -117,14 +117,14 @@ export default function Caller() {
     drawnNumbers.length >= 75
       ? 'Todas as pedras sorteadas!'
       : isGlobeSpinning
-      ? 'Sorteando…'
-      : 'Sortear próxima pedra';
+        ? 'Sorteando…'
+        : 'Sortear pedra';
 
   return (
     <div className="caller-container">
       <div className="caller-header">
         <button id="btn-sortador-voltar-qrcode" className="btn-back-qr" onClick={handleGoToSetup}>
-          ← QR Code
+          ← Sair
         </button>
         <div className="game-info">
           <div className="game-label">Jogo</div>

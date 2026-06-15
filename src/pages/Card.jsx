@@ -264,7 +264,7 @@ export default function Card() {
   return (
     <div className="card-container">
       <button id="btn-cartela-voltar-inicio" className="btn-back" onClick={handleGoToHome}>
-        ← Início
+        ← Sair
       </button>
 
       <div className="card-header">
@@ -273,7 +273,7 @@ export default function Card() {
       </div>
 
       {playerCard && (
-        <div className="bingo-grid-wrapper">
+        <div className={`bingo-grid-wrapper ${markedCount === 24 ? 'is-full-card' : ''}`}>
           {/* Header B-I-N-G-O */}
           <div className="letters-header">
             {['B', 'I', 'N', 'G', 'O'].map((l) => (
@@ -324,7 +324,9 @@ export default function Card() {
         </button>
       ) : (
         <div className="stats-panel">
-          <span className="marked-count">{markedCount} pedras marcadas</span>
+          <span className="marked-count">
+            {markedCount === 24 ? "Cartela completa! 🏆" : `${markedCount} pedras marcadas`}
+          </span>
           {hasWins && (
             <span className="wins-indicator">
               · {winsCount} {winsLabel} completa{winsPlural}
