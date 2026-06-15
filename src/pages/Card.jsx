@@ -325,11 +325,12 @@ export default function Card() {
       ) : (
         <div className="stats-panel">
           <span className="marked-count">
-            {markedCount === 24 ? "Cartela completa! 🏆" : `${markedCount} pedras marcadas`}
+            {markedCount} pedras marcadas
           </span>
+          <span className="separator">•</span>
           {hasWins && (
             <span className="wins-indicator">
-              · {winsCount} {winsLabel} completa{winsPlural}
+              {markedCount === 24 ? "Cartela completa! 🏆" : `${winsCount} ${winsLabel} completa${winsPlural}`}
             </span>
           )}
         </div>
