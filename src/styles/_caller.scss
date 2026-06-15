@@ -1,0 +1,266 @@
+// _caller.scss
+@use 'variables' as *;
+
+.caller-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 22px 20px 36px;
+  animation: pageIn 0.5s ease both;
+
+  .caller-header {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    .btn-back-qr {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 10px;
+      padding: 9px 16px;
+      color: $white;
+      font-family: $primary-font;
+      font-size: 14px;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.2s;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+    }
+
+    .game-info {
+      text-align: center;
+      .game-label {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.4);
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+      }
+      .game-id {
+        font-size: 20px;
+        font-weight: 700;
+        color: $accent-color;
+        letter-spacing: 4px;
+      }
+    }
+
+    .counter-badge {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      padding: 8px 16px;
+      text-align: center;
+      min-width: 72px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+
+      .counter-value {
+        font-size: 26px;
+        font-weight: 800;
+        color: $accent-color;
+        line-height: 1;
+      }
+
+      .counter-total {
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.4);
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .caller-main-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 36px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 720px;
+
+    .globe-wrapper {
+      display: inline-block;
+      transform-origin: center 86%;
+      animation: globeRock 3.5s ease-in-out infinite;
+
+      &.spinning {
+        animation: globeShake 0.42s ease-in-out 3;
+      }
+    }
+
+    .last-ball-section {
+      text-align: center;
+      min-width: 160px;
+
+      .last-ball-label {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.4);
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+      }
+
+      .last-ball {
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 34% 28%, #FBE49E, #D4A853, #9B6110);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        box-shadow: 0 12px 44px rgba(0, 0, 0, 0.5), inset 0 3px 6px rgba(255, 255, 255, 0.28);
+        animation: ballPop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+        gap: 0;
+
+        .ball-letter {
+          font-size: 20px;
+          font-weight: 800;
+          color: rgba(30, 9, 0, 0.65);
+          font-family: $primary-font;
+          line-height: 1;
+          margin-bottom: 1px;
+        }
+
+        .ball-number {
+          font-size: 46px;
+          &.single-digit {
+            font-size: 56px;
+          }
+          font-weight: 900;
+          color: #1E0900;
+          font-family: $primary-font;
+          line-height: 0.9;
+        }
+      }
+
+      .last-ball-empty {
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        border: 3px dashed rgba(255, 255, 255, 0.18);
+        background: rgba(255, 255, 255, 0.04);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+
+        span {
+          color: rgba(255, 255, 255, 0.22);
+          font-size: 13px;
+          text-align: center;
+          line-height: 1.4;
+          padding: 12px;
+          white-space: pre-line;
+        }
+      }
+    }
+  }
+
+  .history-panel {
+    width: 100%;
+    max-width: 800px;
+    background: rgba(0, 0, 0, 0.18);
+    border-radius: 16px;
+    padding: 18px 18px 14px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    min-height: 88px;
+
+    .history-title {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.35);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .history-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+
+      .history-ball {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-family: $primary-font;
+        flex-shrink: 0;
+        gap: 0;
+        line-height: 1;
+
+        &.is-latest {
+          background: radial-gradient(circle at 34% 28%, #FBE49E, #D4A853, #9B6110);
+          color: #1E0900;
+          border: none;
+          animation: historySlide 0.35s ease both;
+        }
+
+        &.is-older {
+          background: rgba(212, 168, 83, 0.18);
+          color: #D4A853;
+          border: 1px solid rgba(212, 168, 83, 0.28);
+        }
+
+        .ball-letter-sm {
+          font-size: 9px;
+          font-weight: 800;
+          line-height: 1;
+        }
+
+        .ball-number-sm {
+          font-size: 13px;
+          &.single-digit-sm {
+            font-size: 15px;
+          }
+          font-weight: 700;
+          line-height: 1.1;
+        }
+      }
+    }
+
+    .history-empty {
+      color: rgba(255, 255, 255, 0.2);
+      margin: 0;
+      font-size: 14px;
+      text-align: center;
+      padding-top: 6px;
+    }
+  }
+
+  .btn-draw {
+    background: $accent-color;
+    color: $primary-bg;
+    border: none;
+    border-radius: 14px;
+    padding: 20px 60px;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: $primary-font;
+    cursor: pointer;
+    transition: transform 0.18s, box-shadow 0.18s, opacity 0.2s;
+    letter-spacing: 0.3px;
+
+    &:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 36px rgba(240, 204, 122, 0.45);
+    }
+
+    &:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+// main.scss
+@use 'variables';
+@use 'home';
+@use 'setup';
+@use 'caller';
+@use 'card';
+@use 'celebration';
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: variables.$primary-font;
+  background-color: variables.$primary-bg;
+  color: variables.$white;
+}
+
+.app-wrapper {
+  min-height: 100vh;
+  background: variables.$primary-bg;
+  position: relative;
+  overflow-x: hidden;
+}
+
+

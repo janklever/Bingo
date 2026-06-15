@@ -1,0 +1,132 @@
+// _home.scss
+@use 'variables' as *;
+
+.home-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 52px 24px;
+  animation: pageIn 0.5s ease both;
+
+  .home-header {
+    text-align: center;
+    margin-bottom: 52px;
+
+    .globe-icon {
+      display: inline-block;
+      animation: globeRock 3.5s ease-in-out infinite;
+      transform-origin: center 86%;
+    }
+
+    h1 {
+      font-size: clamp(64px, 10vw, 100px);
+      font-weight: 900;
+      color: $accent-color;
+      letter-spacing: 20px;
+      margin: 18px 0 0;
+      line-height: 1;
+      text-shadow: 0 6px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    p {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 13px;
+      letter-spacing: 5px;
+      margin: 8px 0 0;
+      text-transform: uppercase;
+    }
+  }
+
+  .home-steps {
+    display: flex;
+    gap: 18px;
+    width: 100%;
+    max-width: 860px;
+    margin-bottom: 52px;
+    flex-wrap: wrap;
+
+    .step-card {
+      flex: 1;
+      min-width: 230px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 28px 22px;
+
+      .step-number {
+        width: 44px;
+        height: 44px;
+        background: $accent-color;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        font-weight: 900;
+        color: $primary-bg;
+        margin-bottom: 14px;
+      }
+
+      h3 {
+        margin: 0 0 8px;
+        font-size: 16px;
+        font-weight: 700;
+        color: $accent-color;
+      }
+
+      p {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.65;
+        color: rgba(255, 255, 255, 0.6);
+      }
+    }
+  }
+
+  .home-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .btn-primary {
+      background: $accent-color;
+      color: $primary-bg;
+      border: none;
+      border-radius: 14px;
+      padding: 18px 44px;
+      font-size: 18px;
+      font-weight: 700;
+      font-family: $primary-font;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+      transition: transform 0.18s, box-shadow 0.18s;
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 14px 36px rgba(240, 204, 122, 0.45);
+      }
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: $white;
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
+      border-radius: 14px;
+      padding: 18px 44px;
+      font-size: 18px;
+      font-weight: 700;
+      font-family: $primary-font;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+      transition: transform 0.18s, background 0.18s;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.16);
+        transform: translateY(-3px);
+      }
+    }
+  }
+}
