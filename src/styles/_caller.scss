@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 22px 20px 36px;
+  padding: $spacing-5 $spacing-5 $spacing-9;
   animation: pageIn 0.5s ease both;
 
   .caller-header {
@@ -16,13 +16,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: $spacing-5;
 
     .btn-back-qr, .btn-show-qr {
       background: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: 10px;
-      padding: 9px 16px;
+      border-radius: $radius-sm;
+      padding: $spacing-2 $spacing-4;
       color: $white;
       font-family: $primary-font;
       font-size: 14px;
@@ -70,8 +70,8 @@
     .qr-modal-content {
       background: $light-bg;
       color: $dark-green;
-      border-radius: 20px;
-      padding: 30px;
+      border-radius: $radius-xl;
+      padding: $spacing-7;
       width: 90%;
       max-width: 400px;
       text-align: center;
@@ -86,7 +86,7 @@
         background: none;
         border: none;
         font-size: 24px;
-        color: rgba(7, 30, 24, 0.5);
+        color: rgba($dark-green, 0.5);
         cursor: pointer;
         line-height: 1;
         transition: color 0.2s;
@@ -98,7 +98,7 @@
 
       h2 {
         margin-top: 0;
-        margin-bottom: 8px;
+        margin-bottom: $spacing-2;
         font-size: 24px;
         font-weight: 800;
         color: #0A5C50;
@@ -106,33 +106,33 @@
 
       p {
         font-size: 14px;
-        color: rgba(7, 30, 24, 0.7);
+        color: rgba($dark-green, 0.7);
         margin-top: 0;
-        margin-bottom: 20px;
+        margin-bottom: $spacing-5;
       }
 
       .qr-code-wrapper {
         display: block;
-        margin: 0 auto 20px;
+        margin: 0 auto $spacing-5;
         width: fit-content;
 
         .qr-image {
           display: block;
-          border-radius: 8px;
+          border-radius: $radius-sm;
         }
       }
 
       .game-id-badge {
-        border-top: 2px dashed #D5C9B0;
-        padding-top: 16px;
-        padding-bottom: 16px;
+        border-top: 2px dashed $border-light;
+        padding-top: $spacing-4;
+        padding-bottom: $spacing-4;
 
         p {
-          color: #8A7A60;
+          color: $text-muted-dark;
           font-size: 11px;
           letter-spacing: 2px;
           text-transform: uppercase;
-          margin: 0 0 5px;
+          margin: 0 0 $spacing-1;
         }
 
         .game-id {
@@ -148,13 +148,13 @@
       .link-copy-section {
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: $spacing-2;
 
         .join-link-input {
           background: rgba(0, 0, 0, 0.05);
           border: 1px solid rgba(0, 0, 0, 0.1);
-          border-radius: 8px;
-          padding: 10px 12px;
+          border-radius: $radius-sm;
+          padding: $spacing-2 $spacing-3;
           font-size: 13px;
           color: $dark-green;
           word-break: break-all;
@@ -165,8 +165,8 @@
           background: $primary-bg;
           color: $white;
           border: none;
-          border-radius: 8px;
-          padding: 10px;
+          border-radius: $radius-sm;
+          padding: $spacing-2;
           font-weight: 700;
           cursor: pointer;
           transition: background 0.2s;
@@ -177,7 +177,7 @@
           }
 
           &.copied {
-            background: #2e7d32;
+            background: $success-green;
           }
         }
       }
@@ -198,8 +198,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 36px;
-    margin-bottom: 28px;
+    gap: $spacing-9;
+    margin-bottom: $spacing-7;
     flex-wrap: wrap;
     width: 100%;
     max-width: 720px;
@@ -231,14 +231,14 @@
         color: rgba(255, 255, 255, 0.4);
         letter-spacing: 2.5px;
         text-transform: uppercase;
-        margin-bottom: 14px;
+        margin-bottom: $spacing-3;
       }
 
       .last-ball {
         width: 130px;
         height: 130px;
         border-radius: 50%;
-        background: radial-gradient(circle at 34% 28%, #FBE49E, #D4A853, #9B6110);
+        background: radial-gradient(circle at 34% 28%, $gold-light, $gold-mid, $gold-dark);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -252,7 +252,7 @@
         .ball-letter {
           font-size: 20px;
           font-weight: 800;
-          color: rgba(30, 9, 0, 0.65);
+          color: rgba($ball-text-dark, 0.65);
           font-family: $primary-font;
           line-height: 1;
           margin-bottom: 1px;
@@ -264,7 +264,7 @@
             font-size: 56px;
           }
           font-weight: 900;
-          color: #1E0900;
+          color: $ball-text-dark;
           font-family: $primary-font;
           line-height: 0.9;
         }
@@ -286,7 +286,7 @@
           font-size: 13px;
           text-align: center;
           line-height: 1.4;
-          padding: 12px;
+          padding: $spacing-3;
           white-space: pre-line;
         }
       }
@@ -297,9 +297,9 @@
     width: 100%;
     max-width: 800px;
     background: rgba(0, 0, 0, 0.18);
-    border-radius: 16px;
-    padding: 18px 18px 14px;
-    margin-bottom: 24px;
+    border-radius: $radius-lg;
+    padding: $spacing-4 $spacing-4 $spacing-3;
+    margin-bottom: $spacing-6;
     border: 1px solid rgba(255, 255, 255, 0.07);
     min-height: 88px;
 
@@ -308,13 +308,13 @@
       color: rgba(255, 255, 255, 0.35);
       letter-spacing: 2px;
       text-transform: uppercase;
-      margin-bottom: 12px;
+      margin-bottom: $spacing-3;
     }
 
     .history-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 7px;
+      gap: $spacing-2;
 
       .history-ball {
         width: 42px;
@@ -331,16 +331,16 @@
         line-height: 1;
 
         &.is-latest {
-          background: radial-gradient(circle at 34% 28%, #FBE49E, #D4A853, #9B6110);
-          color: #1E0900;
+          background: radial-gradient(circle at 34% 28%, $gold-light, $gold-mid, $gold-dark);
+          color: $ball-text-dark;
           border: none;
           animation: historySlide 0.35s ease both;
         }
 
         &.is-older {
-          background: rgba(212, 168, 83, 0.18);
-          color: #D4A853;
-          border: 1px solid rgba(212, 168, 83, 0.28);
+          background: rgba($gold-mid, 0.18);
+          color: $gold-mid;
+          border: 1px solid rgba($gold-mid, 0.28);
         }
 
         .ball-letter-sm {
@@ -373,8 +373,8 @@
     background: $accent-color;
     color: $primary-bg;
     border: none;
-    border-radius: 14px;
-    padding: 20px 60px;
+    border-radius: $radius-md;
+    padding: $spacing-5 $spacing-15;
     font-size: 20px;
     font-weight: 700;
     font-family: $primary-font;

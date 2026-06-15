@@ -7,6 +7,52 @@ $dark-green: #071E18;
 $white: #ffffff;
 $primary-font: 'Baloo 2', system-ui, sans-serif;
 
+// Cores adicionais consolidadas
+$primary-bg-light: #0e6e60;
+$primary-bg-dark: #084a42;
+$gold-light: #FBE49E;
+$gold-mid: #D4A853;
+$gold-dark: #9B6110;
+$gold-winning-dark: #C8A030;
+$ball-text-dark: #1E0900;
+$cell-text-dark: #1A0A00;
+$border-light: #D5C9B0;
+$text-muted-dark: #8A7A60;
+$success-green: #2e7d32;
+$connection-green: #4EC9A4;
+
+// Escala de espaçamento (base 4px)
+$spacing-1: 4px;
+$spacing-2: 8px;
+$spacing-3: 12px;
+$spacing-4: 16px;
+$spacing-5: 20px;
+$spacing-6: 24px;
+$spacing-7: 28px;
+$spacing-8: 32px;
+$spacing-9: 36px;
+$spacing-10: 40px;
+$spacing-11: 44px;
+$spacing-12: 48px;
+$spacing-13: 52px;
+$spacing-14: 56px;
+$spacing-15: 60px;
+$spacing-16: 64px;
+$spacing-18: 72px;
+$spacing-20: 80px;
+$spacing-22: 88px;
+$spacing-24: 96px;
+$spacing-25: 100px;
+
+// Raios de borda (base 4px)
+$radius-xs: 4px;
+$radius-sm: 8px;
+$radius-md: 12px;
+$radius-lg: 16px;
+$radius-xl: 20px;
+$radius-xxl: 24px;
+
+
 @keyframes pageIn {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }

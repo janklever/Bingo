@@ -7,18 +7,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 24px 18px 44px;
+  padding: $spacing-6 $spacing-5 $spacing-11;
   animation: pageIn 0.5s ease both;
 
   .btn-back {
     position: fixed;
-    top: 22px;
-    left: 22px;
+    top: $spacing-5;
+    left: $spacing-5;
     z-index: 10;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 10px;
-    padding: 10px 18px;
+    border-radius: $radius-sm;
+    padding: $spacing-2 $spacing-4;
     color: $white;
     font-family: $primary-font;
     font-size: 15px;
@@ -32,13 +32,13 @@
 
   .btn-change-code {
     position: fixed;
-    top: 22px;
-    right: 22px;
+    top: $spacing-5;
+    right: $spacing-5;
     z-index: 10;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 10px;
-    padding: 10px 18px;
+    border-radius: $radius-sm;
+    padding: $spacing-2 $spacing-4;
     color: $white;
     font-family: $primary-font;
     font-size: 15px;
@@ -52,11 +52,11 @@
 
   .card-header {
     text-align: center;
-    margin-bottom: 22px;
-    margin-top: 8px;
+    margin-bottom: $spacing-5;
+    margin-top: $spacing-2;
 
     .game-info {
-      margin-bottom: 8px;
+      margin-bottom: $spacing-2;
       .game-label {
         font-size: 11px;
         color: rgba(255, 255, 255, 0.4);
@@ -85,15 +85,15 @@
       font-size: 11px;
       color: rgba(255, 255, 255, 0.4);
       letter-spacing: 3.5px;
-      margin-top: 5px;
+      margin-top: $spacing-1;
       text-transform: uppercase;
     }
   }
 
   .bingo-grid-wrapper {
     background: rgba(0, 0, 0, 0.2);
-    border-radius: 20px;
-    padding: 18px;
+    border-radius: $radius-xl;
+    padding: $spacing-4;
     border: 2px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.32);
     max-width: 380px;
@@ -102,8 +102,8 @@
     .letters-header {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 8px;
-      margin-bottom: 6px;
+      gap: $spacing-2;
+      margin-bottom: $spacing-1;
 
       .letter-cell {
         text-align: center;
@@ -119,11 +119,11 @@
     .cells-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 8px;
+      gap: $spacing-2;
 
       .grid-cell {
         aspect-ratio: 1;
-        border-radius: 10px;
+        border-radius: $radius-sm;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -149,15 +149,15 @@
         }
 
         &.is-marked {
-          border: 2px solid #D4A853;
-          background: radial-gradient(circle at 34% 28%, #FBE49E, #D4A853, #9B6110);
-          box-shadow: 0 4px 14px rgba(212, 168, 83, 0.38);
+          border: 2px solid $gold-mid;
+          background: radial-gradient(circle at 34% 28%, $gold-light, $gold-mid, $gold-dark);
+          box-shadow: 0 4px 14px rgba($gold-mid, 0.38);
           animation: markCell 0.42s cubic-bezier(0.34, 1.56, 0.64, 1) both;
         }
 
         &.is-winning-line {
-          border: 2px solid #FFE082;
-          background: radial-gradient(circle at 34% 28%, #FFE082, #F0CC7A, #C8A030);
+          border: 2px solid $accent-hover;
+          background: radial-gradient(circle at 34% 28%, $accent-hover, $accent-color, $gold-winning-dark);
           box-shadow: 0 0 14px rgba(255, 228, 110, 0.6);
           animation: lineGlow 1.6s ease-in-out infinite;
         }
@@ -165,7 +165,7 @@
         .cell-free-text {
           font-size: 13px;
           font-weight: 900;
-          color: #2A1200;
+          color: $ball-text-dark;
           font-family: $primary-font;
           letter-spacing: 0.5px;
         }
@@ -180,12 +180,12 @@
 
         &.is-marked .cell-free-text,
         &.is-winning-line .cell-free-text {
-          color: #1A0A00;
+          color: $cell-text-dark;
         }
 
         &.is-marked .cell-number-text,
         &.is-winning-line .cell-number-text {
-          color: #1A0A00;
+          color: $cell-text-dark;
         }
 
         &.is-pending .cell-number-text {
@@ -196,10 +196,10 @@
   }
 
   .stats-panel {
-    margin-top: 18px;
-    padding: 11px 22px;
+    margin-top: $spacing-4;
+    padding: $spacing-3 $spacing-5;
     background: rgba(0, 0, 0, 0.18);
-    border-radius: 12px;
+    border-radius: $radius-md;
     border: 1px solid rgba(255, 255, 255, 0.08);
     text-align: center;
 
@@ -209,7 +209,7 @@
     }
 
     .separator {
-      margin: 0 10px;
+      margin: 0 $spacing-2;
       color: rgba(255, 255, 255, 0.5);
     }
 
@@ -223,15 +223,15 @@
   .btn-new-card {
       background: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: 10px;
-      padding: 11px 22px;
+      border-radius: $radius-sm;
+      padding: $spacing-3 $spacing-5;
       color: $white;
       font-family: $primary-font;
       font-size: 14px;
       cursor: pointer;
       flex-shrink: 0;
       transition: background 0.2s;
-      margin-top: 18px;
+      margin-top: $spacing-4;
 
       &:hover {
         background: rgba(255, 255, 255, 0.15);
@@ -239,18 +239,18 @@
     }
 
   .connection-status {
-    margin-top: 12px;
+    margin-top: $spacing-3;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: $spacing-2;
     color: rgba(255, 255, 255, 0.38);
     font-size: 13px;
 
     .status-dot {
-      width: 7px;
-      height: 7px;
+      width: $spacing-2;
+      height: $spacing-2;
       border-radius: 50%;
-      background: #4EC9A4;
+      background: $connection-green;
       animation: connDot 2s ease-in-out infinite;
       flex-shrink: 0;
     }
@@ -261,8 +261,8 @@
     
     .code-entry-card {
       background: rgba(0, 0, 0, 0.2);
-      border-radius: 20px;
-      padding: 32px 24px;
+      border-radius: $radius-xl;
+      padding: $spacing-8 $spacing-6;
       border: 2px solid rgba(255, 255, 255, 0.1);
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.32);
       max-width: 380px;
@@ -275,7 +275,7 @@
         font-size: 22px;
         color: $accent-color;
         margin-top: 0;
-        margin-bottom: 8px;
+        margin-bottom: $spacing-2;
         font-weight: 700;
       }
 
@@ -283,19 +283,19 @@
         font-size: 14px;
         color: rgba(255, 255, 255, 0.7);
         line-height: 1.5;
-        margin-bottom: 24px;
+        margin-bottom: $spacing-6;
       }
 
       .otp-inputs {
         display: flex;
         justify-content: space-between;
-        gap: 8px;
-        margin-bottom: 28px;
+        gap: $spacing-2;
+        margin-bottom: $spacing-7;
 
         .otp-input-box {
-          width: 44px;
-          height: 48px;
-          border-radius: 10px;
+          width: $spacing-11;
+          height: $spacing-12;
+          border-radius: $radius-sm;
           border: 2px solid rgba(255, 255, 255, 0.15);
           background: rgba(255, 255, 255, 0.05);
           color: $white;
@@ -323,8 +323,8 @@
         width: 100%;
         background: $accent-color;
         border: none;
-        border-radius: 12px;
-        padding: 14px 20px;
+        border-radius: $radius-md;
+        padding: $spacing-3 $spacing-5;
         color: $dark-green;
         font-family: $primary-font;
         font-size: 16px;
@@ -372,15 +372,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: $spacing-6;
   animation: fadeIn 0.3s ease both;
 }
 
 .instruction-modal {
-  background: linear-gradient(165deg, #0e6e60 0%, #0a5c50 50%, #084a42 100%);
+  background: linear-gradient(165deg, $primary-bg-light 0%, $primary-bg 50%, $primary-bg-dark 100%);
   border: 2px solid rgba($accent-color, 0.3);
-  border-radius: 24px;
-  padding: 36px 28px 28px;
+  border-radius: $radius-xxl;
+  padding: $spacing-9 $spacing-7 $spacing-7;
   max-width: 360px;
   width: 100%;
   text-align: center;
@@ -392,21 +392,21 @@
     font-size: 24px;
     font-weight: 800;
     color: $accent-color;
-    margin: 0 0 24px;
+    margin: 0 0 $spacing-6;
     letter-spacing: 1px;
   }
 
   .instruction-steps {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    margin-bottom: 28px;
+    gap: $spacing-4;
+    margin-bottom: $spacing-7;
   }
 
   .instruction-step {
     display: flex;
     align-items: flex-start;
-    gap: 14px;
+    gap: $spacing-3;
     text-align: left;
 
     .instruction-icon {
@@ -429,8 +429,8 @@
     background: $accent-color;
     color: $dark-green;
     border: none;
-    border-radius: 14px;
-    padding: 16px 24px;
+    border-radius: $radius-md;
+    padding: $spacing-4 $spacing-6;
     font-family: $primary-font;
     font-size: 18px;
     font-weight: 700;

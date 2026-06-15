@@ -7,12 +7,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 52px 24px;
+  padding: $spacing-13 $spacing-6;
   animation: pageIn 0.5s ease both;
 
   .home-header {
     text-align: center;
-    margin-bottom: 52px;
+    margin-bottom: $spacing-13;
 
     .globe-icon {
       display: inline-block;
@@ -25,7 +25,7 @@
       font-weight: 900;
       color: $accent-color;
       letter-spacing: 20px;
-      margin: 18px 0 0;
+      margin: $spacing-5 0 0;
       line-height: 1;
       text-shadow: 0 6px 32px rgba(0, 0, 0, 0.4);
     }
@@ -34,17 +34,17 @@
       color: rgba(255, 255, 255, 0.5);
       font-size: 13px;
       letter-spacing: 5px;
-      margin: 8px 0 0;
+      margin: $spacing-2 0 0;
       text-transform: uppercase;
     }
   }
 
   .home-steps {
     display: flex;
-    gap: 18px;
+    gap: $spacing-5;
     width: 100%;
     max-width: 860px;
-    margin-bottom: 52px;
+    margin-bottom: $spacing-13;
     flex-wrap: wrap;
 
     .step-card {
@@ -52,25 +52,25 @@
       min-width: 230px;
       background: rgba(255, 255, 255, 0.07);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 28px 22px;
+      border-radius: $radius-xl;
+      padding: $spacing-7 $spacing-5;
 
       .step-number {
-        width: 44px;
-        height: 44px;
+        width: $spacing-11;
+        height: $spacing-11;
         background: $accent-color;
-        border-radius: 12px;
+        border-radius: $radius-md;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 22px;
         font-weight: 900;
         color: $primary-bg;
-        margin-bottom: 14px;
+        margin-bottom: $spacing-3;
       }
 
       h3 {
-        margin: 0 0 8px;
+        margin: 0 0 $spacing-2;
         font-size: 16px;
         font-weight: 700;
         color: $accent-color;
@@ -87,7 +87,7 @@
 
   .home-actions {
     display: flex;
-    gap: 14px;
+    gap: $spacing-3;
     flex-wrap: wrap;
     justify-content: center;
 
@@ -95,8 +95,8 @@
       background: $accent-color;
       color: $primary-bg;
       border: none;
-      border-radius: 14px;
-      padding: 18px 44px;
+      border-radius: $radius-md;
+      padding: $spacing-4 $spacing-11;
       font-size: 18px;
       font-weight: 700;
       font-family: $primary-font;
@@ -114,8 +114,8 @@
       background: rgba(255, 255, 255, 0.1);
       color: $white;
       border: 1.5px solid rgba(255, 255, 255, 0.25);
-      border-radius: 14px;
-      padding: 18px 44px;
+      border-radius: $radius-md;
+      padding: $spacing-4 $spacing-11;
       font-size: 18px;
       font-weight: 700;
       font-family: $primary-font;
@@ -130,3 +130,4 @@
     }
   }
 }
+
