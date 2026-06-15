@@ -300,35 +300,23 @@ export default function Card() {
         </div>
       )}
 
-      <div className="stats-panel">
-        {markedCount === 0 ? (
-          <button
-            onClick={handleSwapCard}
-            style={{
-              background: 'rgba(255, 255, 255, 0.1)',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-              borderRadius: '8px',
-              padding: '8px 16px',
-              color: '#fff',
-              fontSize: '14px',
-              fontWeight: '600',
-              cursor: 'pointer',
-              fontFamily: "'Baloo 2', sans-serif"
-            }}
-          >
-            🔄 Gerar nova cartela
-          </button>
-        ) : (
-          <>
-            <span className="marked-count">{markedCount} pedras marcadas</span>
-            {hasWins && (
-              <span className="wins-indicator">
-                · {winsCount} {winsLabel} completa{winsPlural}
-              </span>
-            )}
-          </>
-        )}
-      </div>
+      {markedCount === 0 ? (
+        <button
+          onClick={handleSwapCard}
+          className="btn-new-card"
+        >
+          Trocar minha cartela
+        </button>
+      ) : (
+        <div className="stats-panel">
+          <span className="marked-count">{markedCount} pedras marcadas</span>
+          {hasWins && (
+            <span className="wins-indicator">
+              · {winsCount} {winsLabel} completa{winsPlural}
+            </span>
+          )}
+        </div>
+      )}
 
       <Celebration
         celebrationData={celebrationData}
