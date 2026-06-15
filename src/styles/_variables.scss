@@ -1,25 +1,75 @@
 // variables.scss
-$primary-bg: #0A5C50;
-$accent-color: #F0CC7A;
-$accent-hover: #FFE082;
-$light-bg: #FFF8E7;
-$dark-green: #071E18;
-$white: #ffffff;
 $primary-font: 'Baloo 2', system-ui, sans-serif;
 
-// Cores adicionais consolidadas
-$primary-bg-light: #0e6e60;
-$primary-bg-dark: #084a42;
-$gold-light: #FBE49E;
-$gold-mid: #D4A853;
-$gold-dark: #9B6110;
-$gold-winning-dark: #C8A030;
-$ball-text-dark: #1E0900;
-$cell-text-dark: #1A0A00;
-$border-light: #D5C9B0;
-$text-muted-dark: #8A7A60;
-$success-green: #2e7d32;
-$connection-green: #4EC9A4;
+// ==========================================
+// 🎨 PAINEL DE TEMA (Edite apenas aqui para personalizar)
+// ==========================================
+$brand-primary: #0A5C50; // Cor de fundo principal (Verde)
+$brand-accent:  #F0CC7A; // Cor de destaque principal (Dourado)
+
+$light-bg:      #FFF8E7; // Fundo de modais claros e card QR Code
+$dark-green:    #071E18; // Cor escura de contraste para textos
+$white:         #FFFFFF;
+$black:         #000000;
+
+// ==========================================
+// ⚙️ GERAÇÃO AUTOMÁTICA DO TEMA (Não altere)
+// ==========================================
+@use 'sass:color';
+
+$primary-bg:       $brand-primary;
+$primary-bg-light: color.adjust($brand-primary, $lightness: 8%);
+$primary-bg-dark:  color.adjust($brand-primary, $lightness: -6%);
+
+$accent-color:     $brand-accent;
+$accent-hover:     color.adjust($brand-accent, $lightness: 8%);
+
+// Elementos de Ouro (Pedras do bingo e cartela)
+$gold-light:        color.adjust($brand-accent, $lightness: 10%);
+$gold-mid:          $brand-accent;
+$gold-dark:         color.adjust($brand-accent, $lightness: -20%);
+$gold-winning-dark: color.adjust($brand-accent, $lightness: -15%);
+
+// Cores de texto das pedras e células ativas
+$ball-text-dark:    color.adjust($brand-accent, $lightness: -45%, $saturation: -50%);
+$cell-text-dark:    color.adjust($brand-accent, $lightness: -47%, $saturation: -60%);
+
+// Elementos secundários sobre fundos claros
+$border-light:      color.adjust($light-bg, $lightness: -15%);
+$text-muted-dark:   color.adjust($light-bg, $lightness: -35%, $saturation: -15%);
+
+// Cores de Status
+$success-green:     #2E7D32;
+$connection-green:  #4EC9A4;
+
+// Escala de Fontes (base 4px / em rem para acessibilidade)
+$font-xs: 0.75rem;          // ~12px
+$font-sm: 0.875rem;         // ~14px
+$font-md: 1rem;             // ~16px (base)
+$font-lg: 1.125rem;         // ~18px
+$font-xl: 1.25rem;          // ~20px
+$font-2xl: 1.5rem;          // ~24px
+$font-3xl: 1.75rem;         // ~28px
+$font-4xl: 2rem;            // ~32px
+$font-5xl: 2.75rem;         // ~44px
+$font-display-sm: 2.875rem; // ~46px
+$font-display-md: 3.5rem;   // ~56px
+$font-display-lg: 6.25rem;  // ~100px
+
+
+// Letter Spacings (em para escalabilidade responsiva)
+$tracking-tighter: 0.02em;
+$tracking-tight: 0.04em;
+$tracking-normal: 0.06em;
+$tracking-wide: 0.1em;
+$tracking-wider: 0.12em;
+$tracking-widest: 0.15em;
+$tracking-extra-wide: 0.18em;
+$tracking-mega: 0.2em;
+$tracking-giga: 0.25em;
+$tracking-ultra: 0.3em;
+$tracking-hyper: 0.35em;
+$tracking-super: 0.4em;
 
 // Escala de espaçamento (base 4px)
 $spacing-1: 4px;
@@ -50,7 +100,7 @@ $radius-sm: 8px;
 $radius-md: 12px;
 $radius-lg: 16px;
 $radius-xl: 20px;
-$radius-xxl: 24px;
+$radius-2xl: 24px;
 
 
 @keyframes pageIn {

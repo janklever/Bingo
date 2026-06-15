@@ -16,26 +16,31 @@ export default function Home() {
   return (
     <div className="home-container">
       <div className="home-header">
-        <BingoGlobe width={108} height={128} isSpinning={false} />
         <h1>BINGO</h1>
         <p>Online</p>
       </div>
 
       <div className="home-steps">
         <div className="step-card">
-          <div className="step-number">1</div>
-          <h3>Organizador</h3>
-          <p>Acesse "Sorteio", compartilhe o QR Code com os participantes e inicie o sorteio das pedras.</p>
+          <h3>
+            <i>1</i>
+            <span>Organizador</span>
+          </h3>
+          <p>Compartilhe o QR Code com os participantes e inicie o sorteio.</p>
         </div>
         <div className="step-card">
-          <div className="step-number">2</div>
-          <h3>Participante</h3>
-          <p>Escaneie o QR Code para receber sua cartela única, gerada aleatoriamente para você.</p>
+          <h3>
+            <i>2</i>
+            <span>Participante</span>
+          </h3>
+          <p>Escaneie o QR Code ou digite o código do sorteio para receber sua cartela única.</p>
         </div>
         <div className="step-card">
-          <div className="step-number">3</div>
-          <h3>Ganhe!</h3>
-          <p>Toque nas pedras sorteadas para marcá-las. Complete uma linha ou coluna e comemore!</p>
+          <h3>
+            <i>3</i>
+            <span>Ganhador</span>
+          </h3>
+          <p>Fique atendo, ao completar uma linha ou coluna grite: <strong>BINGO!</strong></p>
         </div>
       </div>
 

@@ -7,12 +7,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: $spacing-13 $spacing-6;
+  padding: $spacing-8 $spacing-6;
   animation: pageIn 0.5s ease both;
 
   .home-header {
     text-align: center;
-    margin-bottom: $spacing-13;
+    margin-bottom: $spacing-8;
 
     .globe-icon {
       display: inline-block;
@@ -24,16 +24,16 @@
       font-size: clamp(64px, 10vw, 100px);
       font-weight: 900;
       color: $accent-color;
-      letter-spacing: 20px;
-      margin: $spacing-5 0 0;
+      letter-spacing: $tracking-mega;
+      margin: 0;
       line-height: 1;
-      text-shadow: 0 6px 32px rgba(0, 0, 0, 0.4);
+      text-shadow: 0 6px 32px rgba($black, 0.4);
     }
 
     p {
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 13px;
-      letter-spacing: 5px;
+      color: rgba($white, 0.5);
+      font-size: $font-sm;
+      letter-spacing: $tracking-giga;
       margin: $spacing-2 0 0;
       text-transform: uppercase;
     }
@@ -41,46 +41,52 @@
 
   .home-steps {
     display: flex;
-    gap: $spacing-5;
+    gap: $spacing-2;
     width: 100%;
     max-width: 860px;
-    margin-bottom: $spacing-13;
+    margin-bottom: $spacing-8;
     flex-wrap: wrap;
 
     .step-card {
       flex: 1;
       min-width: 230px;
-      background: rgba(255, 255, 255, 0.07);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba($white, 0.07);
+      border: 1px solid rgba($white, 0.1);
       border-radius: $radius-xl;
-      padding: $spacing-7 $spacing-5;
-
-      .step-number {
-        width: $spacing-11;
-        height: $spacing-11;
-        background: $accent-color;
-        border-radius: $radius-md;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 22px;
-        font-weight: 900;
-        color: $primary-bg;
-        margin-bottom: $spacing-3;
-      }
+      padding: $spacing-4;
 
       h3 {
-        margin: 0 0 $spacing-2;
-        font-size: 16px;
-        font-weight: 700;
-        color: $accent-color;
+        margin: 0 0 $spacing-3;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: $spacing-4;
+
+        i {
+          width: $spacing-10;
+          height: $spacing-10;
+          background: $accent-color;
+          border-radius: $radius-md;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: $font-2xl;
+          font-weight: 900;
+          color: $primary-bg;
+          font-style: normal;
+        }
+        span{
+          font-size: $font-xl;
+          font-weight: 700;
+          color: $accent-color;
+        }
       }
 
       p {
         margin: 0;
-        font-size: 14px;
-        line-height: 1.65;
-        color: rgba(255, 255, 255, 0.6);
+        font-size: $font-md;
+        line-height: 1.5;
+        color: rgba($white, 0.6);
       }
     }
   }
@@ -97,34 +103,34 @@
       border: none;
       border-radius: $radius-md;
       padding: $spacing-4 $spacing-11;
-      font-size: 18px;
+      font-size: $font-2xl;
       font-weight: 700;
       font-family: $primary-font;
       cursor: pointer;
-      letter-spacing: 0.3px;
+      letter-spacing: $tracking-tighter;
       transition: transform 0.18s, box-shadow 0.18s;
 
       &:hover {
         transform: translateY(-3px);
-        box-shadow: 0 14px 36px rgba(240, 204, 122, 0.45);
+        box-shadow: 0 14px 36px rgba($accent-color, 0.45);
       }
     }
 
     .btn-secondary {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba($white, 0.1);
       color: $white;
-      border: 1.5px solid rgba(255, 255, 255, 0.25);
+      border: 1.5px solid rgba($white, 0.25);
       border-radius: $radius-md;
       padding: $spacing-4 $spacing-11;
-      font-size: 18px;
+      font-size: $font-2xl;
       font-weight: 700;
       font-family: $primary-font;
       cursor: pointer;
-      letter-spacing: 0.3px;
+      letter-spacing: $tracking-tighter;
       transition: transform 0.18s, background 0.18s;
 
       &:hover {
-        background: rgba(255, 255, 255, 0.16);
+        background: rgba($white, 0.16);
         transform: translateY(-3px);
       }
     }

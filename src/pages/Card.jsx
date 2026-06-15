@@ -381,10 +381,6 @@ export default function Card() {
 
   return (
     <div className="card-container">
-      <button className="btn-change-code" onClick={handleChangeCode}>
-        Novo código
-      </button>
-
       <div className="card-header">
         <div className="game-info">
           <div className="game-label">Bingo</div>
@@ -459,6 +455,10 @@ export default function Card() {
         </div>
       )}
 
+      <button className="btn-change-code" onClick={handleChangeCode}>
+        Novo código
+      </button>
+
       <Celebration
         celebrationData={celebrationData}
         onDismiss={() => setCelebrationData(null)}
@@ -471,11 +471,11 @@ export default function Card() {
             <div className="instruction-steps">
               <div className="instruction-step">
                 <span className="instruction-icon">📢</span>
-                <p>Aguarde o organizador sortear as pedras e anunciar os números.</p>
+                <p>Aguarde os números serem sorteados.</p>
               </div>
               <div className="instruction-step">
                 <span className="instruction-icon">👆</span>
-                <p>Toque no número correspondente na sua cartela para marcá-lo.</p>
+                <p>Toque no número na sua cartela para marcá-lo.</p>
               </div>
               <div className="instruction-step">
                 <span className="instruction-icon">🎉</span>
@@ -483,7 +483,7 @@ export default function Card() {
               </div>
             </div>
             <button className="btn-dismiss-instructions" onClick={() => setShowInstructionModal(false)}>
-              Entendi!
+              Entendi
             </button>
           </div>
         </div>

@@ -15,38 +15,39 @@
     top: $spacing-5;
     left: $spacing-5;
     z-index: 10;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba($white, 0.1);
+    border: 1px solid rgba($white, 0.18);
     border-radius: $radius-sm;
     padding: $spacing-2 $spacing-4;
     color: $white;
     font-family: $primary-font;
-    font-size: 15px;
+    font-size: $font-lg;
     cursor: pointer;
     transition: background 0.2s;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.16);
+      background: rgba($white, 0.16);
     }
   }
 
-  .btn-change-code {
-    position: fixed;
-    top: $spacing-5;
-    right: $spacing-5;
-    z-index: 10;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+  .btn-change-code, .btn-new-card {
+    // position: fixed;
+    // top: $spacing-5;
+    // right: $spacing-5;
+    // z-index: 10;
+    background: rgba($white, 0.1);
+    border: 1px solid rgba($white, 0.18);
     border-radius: $radius-sm;
     padding: $spacing-2 $spacing-4;
     color: $white;
     font-family: $primary-font;
-    font-size: 15px;
+    font-size: $font-lg;
     cursor: pointer;
     transition: background 0.2s;
+    margin-top: $spacing-4;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.16);
+      background: rgba($white, 0.16);
     }
   }
 
@@ -58,16 +59,16 @@
     .game-info {
       margin-bottom: $spacing-2;
       .game-label {
-        font-size: 11px;
-        color: rgba(255, 255, 255, 0.4);
-        letter-spacing: 2.5px;
+        font-size: $font-xs;
+        color: rgba($white, 0.4);
+        letter-spacing: $tracking-wider;
         text-transform: uppercase;
       }
       .game-id {
-        font-size: 20px;
+        font-size: $font-3xl;
         font-weight: 700;
         color: $accent-color;
-        letter-spacing: 4px;
+        letter-spacing: $tracking-mega;
       }
     }
 
@@ -75,27 +76,27 @@
       font-size: clamp(48px, 8vw, 64px);
       font-weight: 900;
       color: $accent-color;
-      letter-spacing: 16px;
+      letter-spacing: $tracking-hyper;
       margin: 0;
       line-height: 1;
-      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+      text-shadow: 0 4px 24px rgba($black, 0.35);
     }
 
     .card-number {
-      font-size: 11px;
-      color: rgba(255, 255, 255, 0.4);
-      letter-spacing: 3.5px;
+      font-size: $font-xs;
+      color: rgba($white, 0.4);
+      letter-spacing: $tracking-extra-wide;
       margin-top: $spacing-1;
       text-transform: uppercase;
     }
   }
 
   .bingo-grid-wrapper {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba($black, 0.2);
     border-radius: $radius-xl;
     padding: $spacing-4;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.32);
+    border: 2px solid rgba($white, 0.1);
+    box-shadow: 0 20px 60px rgba($black, 0.32);
     max-width: 380px;
     width: 100%;
 
@@ -107,12 +108,12 @@
 
       .letter-cell {
         text-align: center;
-        font-size: 26px;
+        font-size: $font-4xl;
         font-weight: 900;
         color: $accent-color;
         font-family: $primary-font;
         line-height: 1.1;
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        text-shadow: 0 2px 8px rgba($black, 0.3);
       }
     }
 
@@ -134,8 +135,8 @@
         transition: background 0.15s, border-color 0.15s;
 
         // Default state
-        border: 2px solid rgba(255, 255, 255, 0.12);
-        background: rgba(255, 255, 255, 0.04);
+        border: 2px solid rgba($white, 0.12);
+        background: rgba($white, 0.04);
         cursor: pointer;
 
         &.is-free {
@@ -163,7 +164,7 @@
         }
 
         .cell-free-text {
-          font-size: 13px;
+          font-size: $font-sm;
           font-weight: 900;
           color: $ball-text-dark;
           font-family: $primary-font;
@@ -171,11 +172,11 @@
         }
 
         .cell-number-text {
-          font-size: 23px;
+          font-size: $font-2xl;
           font-weight: 800;
           font-family: $primary-font;
           user-select: none;
-          color: rgba(255, 255, 255, 0.8);
+          color: rgba($white, 0.8);
         }
 
         &.is-marked .cell-free-text,
@@ -198,53 +199,35 @@
   .stats-panel {
     margin-top: $spacing-4;
     padding: $spacing-3 $spacing-5;
-    background: rgba(0, 0, 0, 0.18);
+    background: rgba($black, 0.18);
     border-radius: $radius-md;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba($white, 0.08);
     text-align: center;
 
     .marked-count {
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 14px;
+      color: rgba($white, 0.5);
+      font-size: $font-md;
     }
 
     .separator {
       margin: 0 $spacing-2;
-      color: rgba(255, 255, 255, 0.5);
+      color: rgba($white, 0.5);
     }
 
     .wins-indicator {
       color: $accent-color;
-      font-size: 14px;
+      font-size: $font-md;
       font-weight: 600;
     }
   }
-
-  .btn-new-card {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: $radius-sm;
-      padding: $spacing-3 $spacing-5;
-      color: $white;
-      font-family: $primary-font;
-      font-size: 14px;
-      cursor: pointer;
-      flex-shrink: 0;
-      transition: background 0.2s;
-      margin-top: $spacing-4;
-
-      &:hover {
-        background: rgba(255, 255, 255, 0.15);
-      }
-    }
 
   .connection-status {
     margin-top: $spacing-3;
     display: flex;
     align-items: center;
     gap: $spacing-2;
-    color: rgba(255, 255, 255, 0.38);
-    font-size: 13px;
+    color: rgba($white, 0.38);
+    font-size: $font-sm;
 
     .status-dot {
       width: $spacing-2;
@@ -260,11 +243,11 @@
     justify-content: center;
     
     .code-entry-card {
-      background: rgba(0, 0, 0, 0.2);
+      background: rgba($black, 0.2);
       border-radius: $radius-xl;
       padding: $spacing-8 $spacing-6;
-      border: 2px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.32);
+      border: 2px solid rgba($white, 0.1);
+      box-shadow: 0 20px 60px rgba($black, 0.32);
       max-width: 380px;
       width: 100%;
       text-align: center;
@@ -272,7 +255,7 @@
 
       h2 {
         font-family: $primary-font;
-        font-size: 22px;
+        font-size: $font-2xl;
         color: $accent-color;
         margin-top: 0;
         margin-bottom: $spacing-2;
@@ -280,8 +263,8 @@
       }
 
       p {
-        font-size: 14px;
-        color: rgba(255, 255, 255, 0.7);
+        font-size: $font-md;
+        color: rgba($white, 0.7);
         line-height: 1.5;
         margin-bottom: $spacing-6;
       }
@@ -296,11 +279,11 @@
           width: $spacing-11;
           height: $spacing-12;
           border-radius: $radius-sm;
-          border: 2px solid rgba(255, 255, 255, 0.15);
-          background: rgba(255, 255, 255, 0.05);
+          border: 2px solid rgba($white, 0.15);
+          background: rgba($white, 0.05);
           color: $white;
           font-family: $primary-font;
-          font-size: 20px;
+          font-size: $font-3xl;
           font-weight: 700;
           text-align: center;
           text-transform: uppercase;
@@ -308,13 +291,13 @@
           transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
 
           &::placeholder {
-            color: rgba(255, 255, 255, 0.25);
+            color: rgba($white, 0.25);
           }
 
           &:focus {
             border-color: $accent-color;
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 0 10px rgba(240, 204, 122, 0.3);
+            background: rgba($white, 0.08);
+            box-shadow: 0 0 10px rgba($accent-color, 0.3);
           }
         }
       }
@@ -327,7 +310,7 @@
         padding: $spacing-3 $spacing-5;
         color: $dark-green;
         font-family: $primary-font;
-        font-size: 16px;
+        font-size: $font-xl;
         font-weight: 700;
         cursor: pointer;
         transition: background-color 0.2s, transform 0.1s, opacity 0.2s;
@@ -342,8 +325,8 @@
         }
 
         &:disabled {
-          background: rgba(255, 255, 255, 0.15);
-          color: rgba(255, 255, 255, 0.3);
+          background: rgba($white, 0.15);
+          color: rgba($white, 0.3);
           cursor: not-allowed;
         }
       }
@@ -353,12 +336,12 @@
 
 @keyframes goldPulse {
   0%, 100% {
-    border-color: rgba(240, 204, 122, 0.6);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.32), 0 0 20px rgba(240, 204, 122, 0.4);
+    border-color: rgba($accent-color, 0.6);
+    box-shadow: 0 20px 60px rgba($black, 0.32), 0 0 20px rgba($accent-color, 0.4);
   }
   50% {
-    border-color: rgba(240, 204, 122, 1);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.32), 0 0 40px rgba(240, 204, 122, 0.8);
+    border-color: rgba($accent-color, 1);
+    box-shadow: 0 20px 60px rgba($black, 0.32), 0 0 40px rgba($accent-color, 0.8);
   }
 }
 
@@ -366,7 +349,7 @@
 .instruction-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba($black, 0.6);
   backdrop-filter: blur(6px);
   z-index: 100;
   display: flex;
@@ -378,48 +361,48 @@
 
 .instruction-modal {
   background: linear-gradient(165deg, $primary-bg-light 0%, $primary-bg 50%, $primary-bg-dark 100%);
-  border: 2px solid rgba($accent-color, 0.3);
-  border-radius: $radius-xxl;
+  border: 2px solid rgba($white, 0.3);
+  border-radius: $radius-2xl;
   padding: $spacing-9 $spacing-7 $spacing-7;
   max-width: 360px;
   width: 100%;
   text-align: center;
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5), 0 0 40px rgba($accent-color, 0.15);
+  box-shadow: 0 24px 80px rgba($black, 0.5), 0 0 40px rgba($accent-color, 0.15);
   animation: celebIn 0.4s ease both;
 
   h2 {
     font-family: $primary-font;
-    font-size: 24px;
+    font-size: $font-3xl;
     font-weight: 800;
     color: $accent-color;
-    margin: 0 0 $spacing-6;
+    margin: 0;
     letter-spacing: 1px;
   }
 
   .instruction-steps {
     display: flex;
     flex-direction: column;
-    gap: $spacing-4;
-    margin-bottom: $spacing-7;
+    gap: $spacing-6;
+    margin: $spacing-8 0;
   }
 
   .instruction-step {
     display: flex;
     align-items: flex-start;
-    gap: $spacing-3;
+    gap: $spacing-4;
     text-align: left;
 
     .instruction-icon {
-      font-size: 28px;
+      font-size: $font-4xl;
       flex-shrink: 0;
       line-height: 1;
       margin-top: 2px;
     }
 
     p {
-      color: rgba(255, 255, 255, 0.85);
-      font-size: 15px;
-      line-height: 1.5;
+      color: rgba($white, 0.85);
+      font-size: $font-lg;
+      line-height: 1.25;
       margin: 0;
     }
   }
@@ -432,14 +415,14 @@
     border-radius: $radius-md;
     padding: $spacing-4 $spacing-6;
     font-family: $primary-font;
-    font-size: 18px;
+    font-size: $font-2xl;
     font-weight: 700;
     cursor: pointer;
     transition: transform 0.18s, box-shadow 0.18s;
 
     &:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(240, 204, 122, 0.4);
+      box-shadow: 0 10px 30px rgba($accent-color, 0.4);
     }
 
     &:active {
@@ -452,3 +435,4 @@
   from { opacity: 0; }
   to   { opacity: 1; }
 }
+

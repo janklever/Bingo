@@ -15,43 +15,43 @@
     position: fixed;
     top: $spacing-5;
     left: $spacing-5;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba($white, 0.1);
+    border: 1px solid rgba($white, 0.18);
     border-radius: $radius-sm;
     padding: $spacing-2 $spacing-4;
     color: $white;
     font-family: $primary-font;
-    font-size: 15px;
+    font-size: $font-lg;
     cursor: pointer;
     transition: background 0.2s;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.16);
+      background: rgba($white, 0.16);
     }
   }
 
   h2 {
-    font-size: 24px;
+    font-size: $font-3xl;
     font-weight: 700;
     color: $accent-color;
     margin: 0 0 $spacing-1;
-    letter-spacing: 3px;
+    letter-spacing: $tracking-widest;
     text-transform: uppercase;
   }
 
   .setup-subtitle {
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 15px;
+    color: rgba($white, 0.5);
+    font-size: $font-lg;
     margin: 0 0 $spacing-9;
     text-align: center;
   }
 
   .qr-card {
     background: $light-bg;
-    border-radius: $radius-xxl;
+    border-radius: $radius-2xl;
     padding: $spacing-7 $spacing-7 $spacing-6;
     text-align: center;
-    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 24px 64px rgba($black, 0.35);
     margin-bottom: $spacing-7;
     max-width: 320px;
     width: 100%;
@@ -68,26 +68,26 @@
 
       p {
         color: $text-muted-dark;
-        font-size: 11px;
-        letter-spacing: 2px;
+        font-size: $font-xs;
+        letter-spacing: $tracking-wide;
         text-transform: uppercase;
         margin: 0 0 $spacing-1;
       }
 
       .game-id {
         color: $primary-bg;
-        font-size: 32px;
+        font-size: $font-5xl;
         font-weight: 900;
         margin: 0;
-        letter-spacing: 8px;
+        letter-spacing: $tracking-ultra;
         line-height: 1;
       }
     }
   }
 
   .setup-info {
-    color: rgba(255, 255, 255, 0.4);
-    font-size: 13px;
+    color: rgba($white, 0.4);
+    font-size: $font-sm;
     max-width: 280px;
     text-align: center;
     line-height: 1.75;
@@ -100,26 +100,26 @@
     border: none;
     border-radius: $radius-md;
     padding: $spacing-5 $spacing-15;
-    font-size: 20px;
+    font-size: $font-3xl;
     font-weight: 700;
     font-family: $primary-font;
     cursor: pointer;
     transition: transform 0.18s, box-shadow 0.18s;
-    letter-spacing: 0.3px;
+    letter-spacing: $tracking-tighter;
 
     &:hover {
       transform: translateY(-3px);
-      box-shadow: 0 14px 36px rgba(240, 204, 122, 0.45);
+      box-shadow: 0 14px 36px rgba($accent-color, 0.45);
     }
   }
 
   .btn-secondary-setup {
     background: transparent;
-    color: rgba(255, 255, 255, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba($white, 0.6);
+    border: 1px solid rgba($white, 0.2);
     border-radius: $radius-md;
     padding: $spacing-3 $spacing-10;
-    font-size: 16px;
+    font-size: $font-xl;
     font-weight: 600;
     font-family: $primary-font;
     cursor: pointer;
@@ -127,9 +127,9 @@
     margin-top: $spacing-3;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba($white, 0.08);
       color: $white;
-      border-color: rgba(255, 255, 255, 0.4);
+      border-color: rgba($white, 0.4);
     }
   }
 }
