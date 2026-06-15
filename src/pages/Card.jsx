@@ -225,7 +225,7 @@ export default function Card() {
     navigate('/');
   };
 
-  const markedCount = markedCells.length;
+  const markedCount = markedCells.filter((idx) => idx !== 12).length;
   const winsCount = completedLines.length;
   const hasWins = winsCount > 0;
   const winsLabel = winsCount === 1 ? 'linha/coluna' : 'linhas/colunas';
