@@ -386,7 +386,10 @@ export default function Card() {
       </button>
 
       <div className="card-header">
-        <h1>BINGO</h1>
+        <div className="game-info">
+          <div className="game-label">Bingo</div>
+          <div className="game-id">{gameId}</div>
+        </div>
         <div className="card-number">Cartela Nº {formattedCardNumber}</div>
       </div>
 
@@ -445,11 +448,13 @@ export default function Card() {
           <span className="marked-count">
             {markedCount} pedras marcadas
           </span>
-          <span className="separator">•</span>
           {hasWins && (
-            <span className="wins-indicator">
-              {markedCount === 24 ? "Cartela completa! 🏆" : `${winsCount} ${winsLabel} completo${winsPlural}`}
-            </span>
+            <>
+              <span className="separator">•</span>
+              <span className="wins-indicator">
+                {markedCount === 24 ? "Cartela completa! 🏆" : `${winsCount} ${winsLabel} completo${winsPlural}`}
+              </span>
+            </>
           )}
         </div>
       )}
