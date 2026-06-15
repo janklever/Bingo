@@ -26,7 +26,7 @@ export default function Setup() {
   return (
     <div className="setup-container">
       <button id="btn-sorteio-voltar-inicio" className="btn-back" onClick={handleGoToHome}>
-        ← Início
+        ← Voltar
       </button>
 
       <h2>Novo sorteio</h2>
