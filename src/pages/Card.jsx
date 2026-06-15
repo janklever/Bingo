@@ -155,31 +155,34 @@ export default function Card() {
   const checkWins = (marked, completed) => {
     const wins = [];
 
-    // Rows check
-    for (let r = 0; r < 5; r++) {
-      const key = 'r' + r;
-      if (
-        !completed.includes(key) &&
-        [0, 1, 2, 3, 4].map((c) => r * 5 + c).every((i) => marked.includes(i))
-      ) {
-        wins.push({ key, title: 'BINGO!', sub: `Linha ${r + 1} completa! 🎉` });
-      }
-    }
-
-    // Columns check
-    for (let c = 0; c < 5; c++) {
-      const key = 'c' + c;
-      if (
-        !completed.includes(key) &&
-        [0, 1, 2, 3, 4].map((r) => r * 5 + c).every((i) => marked.includes(i))
-      ) {
-        wins.push({ key, title: 'BINGO!', sub: `Coluna ${c + 1} completa! 🎉` });
-      }
-    }
-
-    // Full Bingo Check
+    // Full Bingo Check (priority)
     if (marked.length === 25 && !completed.includes('bingo')) {
-      wins.push({ key: 'bingo', title: 'BINGO!', sub: 'Cartela completa! Você ganhou! 🏆' });
+      wins.push({ key: 'bingo', title: 'BINGO!', sub: 'Cartela completa!' });
+    }
+
+    // Only check rows/columns if the card is not fully completed right now
+    if (marked.length < 25) {
+      // Rows check
+      for (let r = 0; r < 5; r++) {
+        const key = 'r' + r;
+        if (
+          !completed.includes(key) &&
+          [0, 1, 2, 3, 4].map((c) => r * 5 + c).every((i) => marked.includes(i))
+        ) {
+          wins.push({ key, title: 'BINGO!', sub: `Linha ${r + 1} completa! 🎉` });
+        }
+      }
+
+      // Columns check
+      for (let c = 0; c < 5; c++) {
+        const key = 'c' + c;
+        if (
+          !completed.includes(key) &&
+          [0, 1, 2, 3, 4].map((r) => r * 5 + c).every((i) => marked.includes(i))
+        ) {
+          wins.push({ key, title: 'BINGO!', sub: `Coluna ${c + 1} completa! 🎉` });
+        }
+      }
     }
 
     if (wins.length === 0) return;
