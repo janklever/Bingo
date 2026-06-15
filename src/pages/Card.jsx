@@ -92,6 +92,8 @@ export default function Card() {
 
     let card = null;
     let num = Math.floor(Math.random() * 999) + 1;
+    let savedMarked = [12];
+    let savedCompleted = [];
 
     try {
       const saved = localStorage.getItem('bcard_' + gameId);
@@ -99,6 +101,16 @@ export default function Card() {
         const parsed = JSON.parse(saved);
         card = parsed.c;
         num = parsed.n;
+      }
+
+      const sm = localStorage.getItem('bmarked_' + gameId);
+      if (sm) {
+        savedMarked = JSON.parse(sm);
+      }
+
+      const sc = localStorage.getItem('bcompleted_' + gameId);
+      if (sc) {
+        savedCompleted = JSON.parse(sc);
       }
     } catch (e) {
       console.error(e);
@@ -108,6 +120,8 @@ export default function Card() {
       card = generateCard();
       try {
         localStorage.setItem('bcard_' + gameId, JSON.stringify({ c: card, n: num }));
+        localStorage.setItem('bmarked_' + gameId, JSON.stringify([12]));
+        localStorage.setItem('bcompleted_' + gameId, JSON.stringify([]));
       } catch (e) {
         console.error(e);
       }
@@ -115,7 +129,8 @@ export default function Card() {
 
     setPlayerCard(card);
     setCardNumber(num);
-    setMarkedCells([12]);
+    setMarkedCells(savedMarked);
+    setCompletedLines(savedCompleted);
   }, [gameId]);
 
   const handleMarkCell = (idx) => {
@@ -129,6 +144,11 @@ export default function Card() {
       playMarkSound();
     }
     setMarkedCells(updatedMarked);
+    try {
+      localStorage.setItem('bmarked_' + gameId, JSON.stringify(updatedMarked));
+    } catch (e) {
+      console.error(e);
+    }
     checkWins(updatedMarked, completedLines);
   };
 
@@ -173,7 +193,13 @@ export default function Card() {
       c: ['#F0CC7A', '#5BB5A0', '#FF8B74', '#FFD93D', '#A8E6CF', '#D0AAFF'][i % 6]
     }));
 
-    setCompletedLines([...completed, ...wins.map((w) => w.key)]);
+    const newCompleted = [...completed, ...wins.map((w) => w.key)];
+    setCompletedLines(newCompleted);
+    try {
+      localStorage.setItem('bcompleted_' + gameId, JSON.stringify(newCompleted));
+    } catch (e) {
+      console.error(e);
+    }
     setCelebrationData({ ...wins[0], confettiData });
     playCelebrationSound(wins[0].key === 'bingo');
   };
@@ -184,6 +210,29 @@ export default function Card() {
       if (k[0] === 'c') return idx % 5 === +k[1];
       return k === 'bingo';
     });
+  };
+
+  const handleSwapCard = () => {
+    // Only allow if no marks (excluding center 12)
+    const activeMarks = markedCells.filter((idx) => idx !== 12);
+    if (activeMarks.length > 0) return;
+
+    const newCard = generateCard();
+    const newNum = Math.floor(Math.random() * 999) + 1;
+
+    try {
+      localStorage.setItem('bcard_' + gameId, JSON.stringify({ c: newCard, n: newNum }));
+      localStorage.setItem('bmarked_' + gameId, JSON.stringify([12]));
+      localStorage.setItem('bcompleted_' + gameId, JSON.stringify([]));
+    } catch (e) {
+      console.error(e);
+    }
+
+    setPlayerCard(newCard);
+    setCardNumber(newNum);
+    setMarkedCells([12]);
+    setCompletedLines([]);
+    setCelebrationData(null);
   };
 
   const handleGoToHome = () => {
@@ -206,6 +255,24 @@ export default function Card() {
       <div className="card-header">
         <h1>BINGO</h1>
         <div className="card-number">Cartela Nº {formattedCardNumber}</div>
+        {markedCount === 0 && (
+          <button
+            onClick={handleSwapCard}
+            style={{
+              marginTop: '10px',
+              background: 'rgba(255, 255, 255, 0.1)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              borderRadius: '8px',
+              padding: '6px 12px',
+              color: '#fff',
+              fontSize: '13px',
+              cursor: 'pointer',
+              fontFamily: "'Baloo 2', sans-serif"
+            }}
+          >
+            🔄 Gerar nova cartela
+          </button>
+        )}
       </div>
 
       {playerCard && (
