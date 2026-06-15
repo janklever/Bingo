@@ -70,7 +70,7 @@ export default function Card({
                   onClick={() => onMarkCell(idx)}
                 >
                   {isFree ? (
-                    <span className="cell-free-text">FREE</span>
+                    <span className="cell-free-text">LIVRE</span>
                   ) : (
                     <span className={`cell-number-text ${num >= 10 ? 'double-digit' : ''}`}>
                       {num}

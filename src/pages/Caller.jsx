@@ -2,7 +2,7 @@ import React from 'react';
 import BingoGlobe from '../components/BingoGlobe';
 
 function getLetterOf(num) {
-  if (num <= 0)  return 'N';
+  if (num <= 0) return 'N';
   if (num <= 15) return 'B';
   if (num <= 30) return 'I';
   if (num <= 45) return 'N';
@@ -23,8 +23,8 @@ export default function Caller({
     drawnNumbers.length >= 75
       ? 'Todas as pedras sorteadas!'
       : isGlobeSpinning
-      ? 'Sorteando…'
-      : 'Sortear Próxima Pedra';
+        ? 'Sorteando…'
+        : 'Sortear próxima pedra';
 
   return (
     <div className="caller-container">

@@ -30,10 +30,10 @@ export default function Home({ onGoToSetup, onGoToCard }) {
 
       <div className="home-actions">
         <button id="btn-sou-organizador" className="btn-primary" onClick={onGoToSetup}>
-          Sou Organizador →
+          Sou organizador →
         </button>
         <button id="btn-ver-minha-cartela" className="btn-secondary" onClick={onGoToCard}>
-          Ver minha Cartela →
+          Ver minha cartela →
         </button>
       </div>
     </div>

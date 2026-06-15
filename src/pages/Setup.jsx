@@ -7,7 +7,7 @@ export default function Setup({ gameId, qrCodeUrl, onGoToHome, onGoToCaller }) {
         ← Início
       </button>
 
-      <h2>Novo Sorteio</h2>
+      <h2>Novo sorteio</h2>
       <p className="setup-subtitle">Compartilhe o QR Code antes de iniciar</p>
 
       <div className="qr-card">
@@ -17,11 +17,11 @@ export default function Setup({ gameId, qrCodeUrl, onGoToHome, onGoToCaller }) {
             width={200}
             height={200}
             className="qr-image"
-            alt="QR Code da Cartela"
+            alt="QR Code da cartela"
           />
         )}
         <div className="game-code-container">
-          <p>Código do Jogo</p>
+          <p>Código do jogo</p>
           <p className="game-id">{gameId}</p>
         </div>
       </div>
@@ -31,7 +31,7 @@ export default function Setup({ gameId, qrCodeUrl, onGoToHome, onGoToCaller }) {
       </p>
 
       <button id="btn-iniciar-sorteio" className="btn-start" onClick={onGoToCaller}>
-        Iniciar Sorteio →
+        Iniciar sorteio →
       </button>
     </div>
   );
