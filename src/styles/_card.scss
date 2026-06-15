@@ -156,9 +156,6 @@
 
         .cell-number-text {
           font-size: 23px;
-          &.double-digit {
-            // font-size: 19px;
-          }
           font-weight: 800;
           font-family: $primary-font;
           user-select: none;
@@ -347,4 +344,95 @@
     border-color: rgba(240, 204, 122, 1);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.32), 0 0 40px rgba(240, 204, 122, 0.8);
   }
+}
+
+// Instruction modal
+.instruction-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: fadeIn 0.3s ease both;
+}
+
+.instruction-modal {
+  background: linear-gradient(165deg, #0e6e60 0%, #0a5c50 50%, #084a42 100%);
+  border: 2px solid rgba($accent-color, 0.3);
+  border-radius: 24px;
+  padding: 36px 28px 28px;
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5), 0 0 40px rgba($accent-color, 0.15);
+  animation: celebIn 0.4s ease both;
+
+  h2 {
+    font-family: $primary-font;
+    font-size: 24px;
+    font-weight: 800;
+    color: $accent-color;
+    margin: 0 0 24px;
+    letter-spacing: 1px;
+  }
+
+  .instruction-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .instruction-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    text-align: left;
+
+    .instruction-icon {
+      font-size: 28px;
+      flex-shrink: 0;
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    p {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 15px;
+      line-height: 1.5;
+      margin: 0;
+    }
+  }
+
+  .btn-dismiss-instructions {
+    width: 100%;
+    background: $accent-color;
+    color: $dark-green;
+    border: none;
+    border-radius: 14px;
+    padding: 16px 24px;
+    font-family: $primary-font;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.18s, box-shadow 0.18s;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(240, 204, 122, 0.4);
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }

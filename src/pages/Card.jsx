@@ -308,9 +308,14 @@ export default function Card() {
     }
   }, [gameId, navigate]);
 
-  const handleGoToHome = () => {
-    navigate('/');
-  };
+  // Show instruction modal on first visit when no numbers are marked
+  useEffect(() => {
+    const activeMarks = markedCells.filter((idx) => idx !== 12).length;
+    if (gameId && playerCard && activeMarks === 0 && !hasShownInstructions.current) {
+      setShowInstructionModal(true);
+      hasShownInstructions.current = true;
+    }
+  }, [gameId, playerCard, markedCells]);
 
   const handleChangeCode = () => {
     const confirm = window.confirm("Deseja trocar o código do sorteio? O progresso da sua cartela atual será perdido.");
@@ -376,12 +381,8 @@ export default function Card() {
 
   return (
     <div className="card-container">
-      <button id="btn-cartela-voltar-inicio" className="btn-back" onClick={handleGoToHome}>
-        ← Voltar
-      </button>
-
       <button className="btn-change-code" onClick={handleChangeCode}>
-        Trocar código
+        Novo código
       </button>
 
       <div className="card-header">
@@ -457,6 +458,31 @@ export default function Card() {
         celebrationData={celebrationData}
         onDismiss={() => setCelebrationData(null)}
       />
+
+      {showInstructionModal && (
+        <div className="instruction-modal-overlay" onClick={() => setShowInstructionModal(false)}>
+          <div className="instruction-modal" onClick={(e) => e.stopPropagation()}>
+            <h2>Como jogar</h2>
+            <div className="instruction-steps">
+              <div className="instruction-step">
+                <span className="instruction-icon">📢</span>
+                <p>Aguarde o organizador sortear as pedras e anunciar os números.</p>
+              </div>
+              <div className="instruction-step">
+                <span className="instruction-icon">👆</span>
+                <p>Toque no número correspondente na sua cartela para marcá-lo.</p>
+              </div>
+              <div className="instruction-step">
+                <span className="instruction-icon">🎉</span>
+                <p>Complete uma linha, coluna ou toda a cartela para ganhar!</p>
+              </div>
+            </div>
+            <button className="btn-dismiss-instructions" onClick={() => setShowInstructionModal(false)}>
+              Entendi!
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
