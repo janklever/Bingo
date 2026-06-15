@@ -1,4 +1,5 @@
 // _caller.scss
+@use 'sass:color';
 @use 'variables' as *;
 
 .caller-container {
@@ -17,7 +18,7 @@
     justify-content: space-between;
     margin-bottom: 20px;
 
-    .btn-back-qr {
+    .btn-back-qr, .btn-show-qr {
       background: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.18);
       border-radius: 10px;
@@ -49,29 +50,137 @@
         letter-spacing: 4px;
       }
     }
+  }
 
-    .counter-badge {
-      background: rgba(0, 0, 0, 0.2);
-      border-radius: 10px;
-      padding: 8px 16px;
+  // Modal QR Code
+  .qr-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.25s ease-out;
+
+    .qr-modal-content {
+      background: $light-bg;
+      color: $dark-green;
+      border-radius: 20px;
+      padding: 30px;
+      width: 90%;
+      max-width: 400px;
       text-align: center;
-      min-width: 72px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      animation: scaleIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 
-      .counter-value {
-        font-size: 26px;
-        font-weight: 800;
-        color: $accent-color;
+      .btn-close-modal {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: rgba(7, 30, 24, 0.5);
+        cursor: pointer;
         line-height: 1;
+        transition: color 0.2s;
+
+        &:hover {
+          color: $dark-green;
+        }
       }
 
-      .counter-total {
-        font-size: 10px;
-        color: rgba(255, 255, 255, 0.4);
+      h2 {
+        margin-top: 0;
+        margin-bottom: 8px;
+        font-size: 24px;
+        font-weight: 800;
+        color: #0A5C50;
+      }
+
+      p {
+        font-size: 14px;
+        color: rgba(7, 30, 24, 0.7);
+        margin-top: 0;
+        margin-bottom: 20px;
+      }
+
+      .qr-code-wrapper {
+        display: block;
+        margin: 0 auto 20px;
+        width: fit-content;
+
+        .qr-image {
+          display: block;
+          border-radius: 8px;
+        }
+      }
+
+      .game-id-badge {
+        display: block;
+        width: fit-content;
+        margin: 0 auto 20px;
+        background: rgba(10, 92, 80, 0.1);
+        color: $primary-bg;
+        padding: 4px 12px;
+        border-radius: 6px;
+        font-weight: 700;
+        font-size: 14px;
         letter-spacing: 1.5px;
-        text-transform: uppercase;
+      }
+
+      .link-copy-section {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        .join-link-input {
+          background: rgba(0, 0, 0, 0.05);
+          border: 1px solid rgba(0, 0, 0, 0.1);
+          border-radius: 8px;
+          padding: 10px 12px;
+          font-size: 13px;
+          color: $dark-green;
+          word-break: break-all;
+          text-align: center;
+        }
+
+        .btn-copy-link {
+          background: $primary-bg;
+          color: $white;
+          border: none;
+          border-radius: 8px;
+          padding: 10px;
+          font-weight: 700;
+          cursor: pointer;
+          transition: background 0.2s;
+
+          &:hover {
+            background: color.adjust($primary-bg, $lightness: 8%);
+          }
+
+          &.copied {
+            background: #2e7d32;
+          }
+        }
       }
     }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes scaleIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
   }
 
   .caller-main-section {
@@ -91,6 +200,14 @@
 
       &.spinning {
         animation: globeShake 0.42s ease-in-out 3;
+
+        .globe-ball-1 { animation: ballSpin1 1.5s infinite linear; }
+        .globe-ball-2 { animation: ballSpin2 1.5s infinite linear; }
+        .globe-ball-3 { animation: ballSpin3 1.5s infinite linear; }
+        .globe-ball-4 { animation: ballSpin4 1.5s infinite linear; }
+        .globe-ball-5 { animation: ballSpin5 1.5s infinite linear; }
+        .globe-ball-6 { animation: ballSpin6 1.5s infinite linear; }
+        .globe-ball-7 { animation: ballSpin7 1.5s infinite linear; }
       }
     }
 
@@ -117,8 +234,9 @@
         justify-content: center;
         margin: 0 auto;
         box-shadow: 0 12px 44px rgba(0, 0, 0, 0.5), inset 0 3px 6px rgba(255, 255, 255, 0.28);
-        animation: ballPop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+        animation: ballFlyOut 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
         gap: 0;
+        transform-origin: center;
 
         .ball-letter {
           font-size: 20px;
@@ -262,5 +380,78 @@
       opacity: 0.45;
       cursor: not-allowed;
     }
+  }
+}
+
+// Ball spinning animations inside the globe
+@keyframes ballSpin1 {
+  0%, 100% { transform: translate(0, 0); }
+  15% { transform: translate(-25px, -50px); }
+  35% { transform: translate(45px, -15px); }
+  55% { transform: translate(-15px, 35px); }
+  75% { transform: translate(35px, -70px); }
+  90% { transform: translate(-35px, -20px); }
+}
+
+@keyframes ballSpin2 {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(40px, -45px); }
+  40% { transform: translate(-40px, -25px); }
+  60% { transform: translate(25px, 20px); }
+  80% { transform: translate(-30px, -60px); }
+}
+
+@keyframes ballSpin3 {
+  0%, 100% { transform: translate(0, 0); }
+  15% { transform: translate(-50px, 10px); }
+  35% { transform: translate(20px, -60px); }
+  55% { transform: translate(-20px, -35px); }
+  75% { transform: translate(45px, -25px); }
+}
+
+@keyframes ballSpin4 {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(15px, -70px); }
+  50% { transform: translate(-45px, -10px); }
+  75% { transform: translate(30px, 25px); }
+}
+
+@keyframes ballSpin5 {
+  0%, 100% { transform: translate(0, 0); }
+  18% { transform: translate(-35px, 25px); }
+  45% { transform: translate(35px, -55px); }
+  70% { transform: translate(-25px, -35px); }
+  88% { transform: translate(25px, 15px); }
+}
+
+@keyframes ballSpin6 {
+  0%, 100% { transform: translate(0, 0); }
+  22% { transform: translate(30px, -30px); }
+  44% { transform: translate(-35px, -50px); }
+  66% { transform: translate(40px, 25px); }
+  88% { transform: translate(-20px, -15px); }
+}
+
+@keyframes ballSpin7 {
+  0%, 100% { transform: translate(0, 0); }
+  15% { transform: translate(-45px, -30px); }
+  35% { transform: translate(25px, -65px); }
+  60% { transform: translate(-15px, 15px); }
+  80% { transform: translate(35px, -20px); }
+}
+
+// Drawn ball flying out animation from globe to slot
+@keyframes ballFlyOut {
+  0% {
+    transform: translate3d(var(--fly-x, 0px), var(--fly-y, 0px), 0) scale(0.1);
+    opacity: 0;
+    filter: blur(4px);
+  }
+  25% {
+    opacity: 1;
+    filter: none;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
   }
 }

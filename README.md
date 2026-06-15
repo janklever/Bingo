@@ -1,4 +1,4 @@
-# Bingo Virtual Brasileiro 🎯
+# Bingo Brasileiro 🎯
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/52d93949-5ae8-455f-91d0-fb5b51aaddb0/deploy-status)](https://app.netlify.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)

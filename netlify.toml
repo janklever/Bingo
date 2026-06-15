@@ -1,4 +1,4 @@
-# Configuração de build e deploy do Netlify para o Bingo Virtual React+Vite
+# Configuração de build e deploy do Netlify para o Bingo React+Vite
 
 [build]
   command = "npm run build"
