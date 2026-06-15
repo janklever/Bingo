@@ -260,7 +260,7 @@ export default function Card() {
   const markedCount = markedCells.filter((idx) => idx !== 12).length;
   const winsCount = completedLines.length;
   const hasWins = winsCount > 0;
-  const winsLabel = winsCount === 1 ? 'linha/coluna' : 'linhas/colunas';
+  const winsLabel = winsCount === 1 ? 'sorteio' : 'sorteios';
   const winsPlural = winsCount === 1 ? '' : 's';
   const formattedCardNumber = String(cardNumber).padStart(3, '0');
 
@@ -333,7 +333,7 @@ export default function Card() {
           <span className="separator">•</span>
           {hasWins && (
             <span className="wins-indicator">
-              {markedCount === 24 ? "Cartela completa! 🏆" : `${winsCount} ${winsLabel} completa${winsPlural}`}
+              {markedCount === 24 ? "Cartela completa! 🏆" : `${winsCount} ${winsLabel} completo${winsPlural}`}
             </span>
           )}
         </div>

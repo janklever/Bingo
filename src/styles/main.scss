@@ -18,10 +18,12 @@ body {
 }
 
 .app-wrapper {
+  max-width: 800px;
   min-height: 100vh;
   background: variables.$primary-bg;
   position: relative;
   overflow-x: hidden;
+  margin: 0 auto;
 }
 
 
