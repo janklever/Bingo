@@ -142,7 +142,7 @@ export default function Card() {
         !completed.includes(key) &&
         [0, 1, 2, 3, 4].map((c) => r * 5 + c).every((i) => marked.includes(i))
       ) {
-        wins.push({ key, title: 'LINHA!', sub: `Linha ${r + 1} completa! 🎉` });
+        wins.push({ key, title: 'BINGO!', sub: `Linha ${r + 1} completa! 🎉` });
       }
     }
 
@@ -153,7 +153,7 @@ export default function Card() {
         !completed.includes(key) &&
         [0, 1, 2, 3, 4].map((r) => r * 5 + c).every((i) => marked.includes(i))
       ) {
-        wins.push({ key, title: 'COLUNA!', sub: `Coluna ${c + 1} completa! 🎉` });
+        wins.push({ key, title: 'BINGO!', sub: `Coluna ${c + 1} completa! 🎉` });
       }
     }
 
