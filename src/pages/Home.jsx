@@ -1,7 +1,20 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import BingoGlobe from '../components/BingoGlobe';
 
-export default function Home({ onGoToSetup, onGoToCard }) {
+export default function Home() {
+  const navigate = useNavigate();
+
+  const handleGoToSetup = () => {
+    navigate('/sorteio');
+  };
+
+  const handleGoToCard = () => {
+    // Generate a temporary/local game ID if none exists
+    const randomGameId = Math.random().toString(36).slice(2, 8).toUpperCase();
+    navigate(`/cartela/${randomGameId}`);
+  };
+
   return (
     <div className="home-container">
       <div className="home-header">
@@ -29,10 +42,10 @@ export default function Home({ onGoToSetup, onGoToCard }) {
       </div>
 
       <div className="home-actions">
-        <button id="btn-sou-organizador" className="btn-primary" onClick={onGoToSetup}>
+        <button id="btn-sou-organizador" className="btn-primary" onClick={handleGoToSetup}>
           Sou organizador →
         </button>
-        <button id="btn-ver-minha-cartela" className="btn-secondary" onClick={onGoToCard}>
+        <button id="btn-ver-minha-cartela" className="btn-secondary" onClick={handleGoToCard}>
           Ver minha cartela →
         </button>
       </div>

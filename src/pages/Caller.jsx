@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import BingoGlobe from '../components/BingoGlobe';
 
 function getLetterOf(num) {
-  if (num <= 0) return 'N';
+  if (num <= 0)  return 'N';
   if (num <= 15) return 'B';
   if (num <= 30) return 'I';
   if (num <= 45) return 'N';
@@ -10,26 +11,111 @@ function getLetterOf(num) {
   return 'O';
 }
 
-export default function Caller({
-  gameId,
-  drawnNumbers,
-  lastDrawn,
-  isGlobeSpinning,
-  onGoToSetup,
-  onDrawNumber
-}) {
+export default function Caller() {
+  const { gameId } = useParams();
+  const navigate = useNavigate();
+
+  const [drawnNumbers, setDrawnNumbers] = useState([]);
+  const [lastDrawn, setLastDrawn] = useState(null);
+  const [isGlobeSpinning, setIsGlobeSpinning] = useState(false);
+
+  const audioContextRef = useRef(null);
+
+  // Load drawn numbers from local storage on mount
+  useEffect(() => {
+    try {
+      const savedDraws = localStorage.getItem('bdraw_' + gameId);
+      if (savedDraws) {
+        const parsed = JSON.parse(savedDraws);
+        setDrawnNumbers(parsed);
+        if (parsed.length > 0) {
+          setLastDrawn(parsed[parsed.length - 1]);
+        }
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }, [gameId]);
+
+  // Audio Context getter
+  const getAudioContext = () => {
+    if (!audioContextRef.current) {
+      try {
+        audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    return audioContextRef.current;
+  };
+
+  const playDrawSound = () => {
+    const ctx = getAudioContext();
+    if (!ctx) return;
+    const t = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(860, t);
+    osc.frequency.exponentialRampToValueAtTime(320, t + 0.4);
+    gain.gain.setValueAtTime(0.28, t);
+    gain.gain.exponentialRampToValueAtTime(0.001, t + 0.55);
+    osc.start(t);
+    osc.stop(t + 0.55);
+  };
+
+  const handleDrawNumber = () => {
+    if (isGlobeSpinning || drawnNumbers.length >= 75) return;
+
+    const pool = Array.from({ length: 75 }, (_, i) => i + 1).filter(
+      (n) => !drawnNumbers.includes(n)
+    );
+    const num = pool[Math.floor(Math.random() * pool.length)];
+    const all = [...drawnNumbers, num];
+
+    setDrawnNumbers(all);
+    setLastDrawn(num);
+    setIsGlobeSpinning(true);
+
+    setTimeout(() => {
+      setIsGlobeSpinning(false);
+    }, 1800);
+
+    try {
+      localStorage.setItem('bdraw_' + gameId, JSON.stringify(all));
+    } catch (e) {
+      console.error(e);
+    }
+
+    try {
+      const channel = new BroadcastChannel('bg_' + gameId);
+      channel.postMessage({ type: 'DR', n: num, a: all });
+      setTimeout(() => channel.close(), 300);
+    } catch (e) {
+      console.error(e);
+    }
+
+    playDrawSound();
+  };
+
+  const handleGoToSetup = () => {
+    navigate('/sorteio');
+  };
+
   const drawDisabled = drawnNumbers.length >= 75 || isGlobeSpinning;
   const drawLabel =
     drawnNumbers.length >= 75
       ? 'Todas as pedras sorteadas!'
       : isGlobeSpinning
-        ? 'Sorteando…'
-        : 'Sortear próxima pedra';
+      ? 'Sorteando…'
+      : 'Sortear próxima pedra';
 
   return (
     <div className="caller-container">
       <div className="caller-header">
-        <button id="btn-sortador-voltar-qrcode" className="btn-back-qr" onClick={onGoToSetup}>
+        <button id="btn-sortador-voltar-qrcode" className="btn-back-qr" onClick={handleGoToSetup}>
           ← QR Code
         </button>
         <div className="game-info">
@@ -88,7 +174,7 @@ export default function Caller({
       <button
         id="btn-sortear-pedra"
         className="btn-draw"
-        onClick={onDrawNumber}
+        onClick={handleDrawNumber}
         disabled={drawDisabled}
       >
         {drawLabel}
