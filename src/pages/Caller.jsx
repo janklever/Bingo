@@ -89,14 +89,7 @@ export default function Caller() {
       console.error(e);
     }
 
-    try {
-      const channel = new BroadcastChannel('bg_' + gameId);
-      channel.postMessage({ type: 'DR', n: num, a: all });
-      setTimeout(() => channel.close(), 300);
-    } catch (e) {
-      console.error(e);
-    }
-
+    // Audio play
     playDrawSound();
   };
 

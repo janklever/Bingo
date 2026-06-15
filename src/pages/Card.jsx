@@ -9,13 +9,10 @@ export default function Card() {
   const [playerCard, setPlayerCard] = useState(null);
   const [cardNumber, setCardNumber] = useState(1);
   const [markedCells, setMarkedCells] = useState([12]);
-  const [drawnNumbers, setDrawnNumbers] = useState([]);
   const [completedLines, setCompletedLines] = useState([]);
   const [celebrationData, setCelebrationData] = useState(null);
-  const [isConnected, setIsConnected] = useState(false);
 
   const audioContextRef = useRef(null);
-  const broadcastChannelRef = useRef(null);
 
   // Helper to generate a new card
   const generateCard = () => {
@@ -89,7 +86,7 @@ export default function Card() {
     });
   };
 
-  // Initial routing and setup based on url params (gameId)
+  // Initial setup based on gameId
   useEffect(() => {
     if (!gameId) return;
 
@@ -119,42 +116,10 @@ export default function Card() {
     setPlayerCard(card);
     setCardNumber(num);
     setMarkedCells([12]);
-
-    let drawn = [];
-    try {
-      const savedDraws = localStorage.getItem('bdraw_' + gameId);
-      if (savedDraws) {
-        drawn = JSON.parse(savedDraws);
-        setDrawnNumbers(drawn);
-      }
-    } catch (e) {
-      console.error(e);
-    }
-
-    // Sincronização em tempo real via BroadcastChannel
-    try {
-      const channel = new BroadcastChannel('bg_' + gameId);
-      channel.onmessage = (event) => {
-        if (event.data.type === 'DR') {
-          setDrawnNumbers(event.data.a);
-        }
-      };
-      broadcastChannelRef.current = channel;
-      setIsConnected(true);
-    } catch (e) {
-      console.error(e);
-    }
-
-    return () => {
-      if (broadcastChannelRef.current) {
-        broadcastChannelRef.current.close();
-      }
-    };
   }, [gameId]);
 
   const handleMarkCell = (idx) => {
     if (!playerCard || idx === 12) return; // FREE cell cannot be unmarked
-    if (isConnected && !drawnNumbers.includes(playerCard[idx])) return; // Can only mark drawn numbers in synced mode
 
     let updatedMarked;
     if (markedCells.includes(idx)) {
@@ -259,13 +224,10 @@ export default function Card() {
             {playerCard.map((num, idx) => {
               const isFree = num === 0;
               const isMarked = markedCells.includes(idx);
-              const isDrawn = isFree || drawnNumbers.includes(num);
-              const isPending = isDrawn && !isMarked;
               const isWinningLine = isMarked && checkInLine(idx);
 
               let cellClass = 'grid-cell';
               if (isFree) cellClass += ' is-free';
-              if (isPending) cellClass += ' is-pending';
               if (isMarked) cellClass += ' is-marked';
               if (isWinningLine) cellClass += ' is-winning-line';
 
@@ -297,13 +259,6 @@ export default function Card() {
           </span>
         )}
       </div>
-
-      {isConnected && (
-        <div className="connection-status">
-          <div className="status-dot" />
-          Sincronizado com o sorteio ao vivo
-        </div>
-      )}
 
       <Celebration
         celebrationData={celebrationData}
