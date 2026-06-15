@@ -48,7 +48,7 @@ export default function Setup() {
       </button>
 
       <h2>Novo sorteio</h2>
-      <p className="setup-subtitle">Compartilhe o QR Code antes de iniciar</p>
+      <p className="setup-subtitle">Leia o QR Code para participar</p>
 
       <div className="qr-card">
         {qrCodeUrl && (

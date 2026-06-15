@@ -240,7 +240,7 @@ export default function Caller() {
             <button className="btn-close-modal" onClick={() => setIsModalOpen(false)}>
               &times;
             </button>
-            <h2>Entrar no Jogo</h2>
+            <h2>Entrar no jogo</h2>
             <p>Escaneie o QR Code abaixo com a câmera do seu celular para receber sua cartela.</p>
 
             <div className="qr-code-wrapper">
@@ -254,7 +254,8 @@ export default function Caller() {
             </div>
 
             <div className="game-id-badge">
-              CÓDIGO: {gameId}
+              <p>Código do jogo</p>
+              <p className="game-id">{gameId}</p>
             </div>
 
             <div className="link-copy-section">

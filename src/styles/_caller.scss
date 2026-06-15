@@ -123,16 +123,26 @@
       }
 
       .game-id-badge {
-        display: block;
-        width: fit-content;
-        margin: 0 auto 20px;
-        background: rgba(10, 92, 80, 0.1);
-        color: $primary-bg;
-        padding: 4px 12px;
-        border-radius: 6px;
-        font-weight: 700;
-        font-size: 14px;
-        letter-spacing: 1.5px;
+        border-top: 2px dashed #D5C9B0;
+        padding-top: 16px;
+        padding-bottom: 16px;
+
+        p {
+          color: #8A7A60;
+          font-size: 11px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          margin: 0 0 5px;
+        }
+
+        .game-id {
+          color: $primary-bg;
+          font-size: 32px;
+          font-weight: 900;
+          margin: 0;
+          letter-spacing: 8px;
+          line-height: 1;
+        }
       }
 
       .link-copy-section {
@@ -160,6 +170,7 @@
           font-weight: 700;
           cursor: pointer;
           transition: background 0.2s;
+          font-family: inherit;
 
           &:hover {
             background: color.adjust($primary-bg, $lightness: 8%);
