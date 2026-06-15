@@ -324,7 +324,7 @@ export default function Card() {
     return (
       <div className="card-container code-entry-container">
         <button id="btn-cartela-voltar-inicio" className="btn-back" onClick={() => navigate('/')}>
-          ← Sair
+          ← Voltar
         </button>
 
         <div className="card-header">
@@ -370,7 +370,7 @@ export default function Card() {
   return (
     <div className="card-container">
       <button id="btn-cartela-voltar-inicio" className="btn-back" onClick={handleGoToHome}>
-        ← Sair
+        ← Voltar
       </button>
 
       <div className="card-header">

@@ -18,7 +18,7 @@ export default function Home() {
       <div className="home-header">
         <BingoGlobe width={108} height={128} isSpinning={false} />
         <h1>BINGO</h1>
-        <p>Online Brasileiro</p>
+        <p>Online</p>
       </div>
 
       <div className="home-steps">
@@ -44,7 +44,7 @@ export default function Home() {
           Sou organizador →
         </button>
         <button id="btn-ver-minha-cartela" className="btn-secondary" onClick={handleGoToCard}>
-          Ver minha cartela →
+          Sou participante →
         </button>
       </div>
     </div>

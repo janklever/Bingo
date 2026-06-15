@@ -170,7 +170,7 @@ export default function Caller() {
     <div className="caller-container">
       <div className="caller-header">
         <button id="btn-sortador-voltar-qrcode" className="btn-back-qr" onClick={handleGoToSetup}>
-          ← Sair
+          ← Voltar
         </button>
         <div className="game-info">
           <div className="game-label">Bingo</div>

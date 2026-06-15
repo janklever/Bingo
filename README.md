@@ -1,9 +1,9 @@
-# Bingo Brasileiro 🎯
+# Bingo 🎯
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/52d93949-5ae8-455f-91d0-fb5b51aaddb0/deploy-status)](https://app.netlify.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Um bingo virtual brasileiro, moderno, open source, estruturado em **React + Vite + SCSS** e 100% responsivo. Perfeito para jogar com amigos, família ou organizar sorteios comunitários.
+Um bingo virtual, moderno, open source, estruturado em **React + Vite + SCSS** e 100% responsivo. Perfeito para jogar com amigos, família ou organizar sorteios comunitários.
 
 Este projeto foi reestruturado de forma modular para seguir os padrões modernos de engenharia de software: separação completa de estilos SCSS e componentização de páginas. Sincronização em tempo real via **BroadcastChannel** e geração de QR Codes inclusa.
 
