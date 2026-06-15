@@ -10,9 +10,7 @@ export default function Home() {
   };
 
   const handleGoToCard = () => {
-    // Generate a temporary/local game ID if none exists
-    const randomGameId = Math.random().toString(36).slice(2, 8).toUpperCase();
-    navigate(`/cartela/${randomGameId}`);
+    navigate('/cartela');
   };
 
   return (

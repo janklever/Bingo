@@ -221,6 +221,100 @@
       flex-shrink: 0;
     }
   }
+
+  &.code-entry-container {
+    justify-content: center;
+    
+    .code-entry-card {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 20px;
+      padding: 32px 24px;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.32);
+      max-width: 380px;
+      width: 100%;
+      text-align: center;
+      animation: pageIn 0.5s ease both;
+
+      h2 {
+        font-family: $primary-font;
+        font-size: 22px;
+        color: $accent-color;
+        margin-top: 0;
+        margin-bottom: 8px;
+        font-weight: 700;
+      }
+
+      p {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.5;
+        margin-bottom: 24px;
+      }
+
+      .otp-inputs {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        margin-bottom: 28px;
+
+        .otp-input-box {
+          width: 44px;
+          height: 48px;
+          border-radius: 10px;
+          border: 2px solid rgba(255, 255, 255, 0.15);
+          background: rgba(255, 255, 255, 0.05);
+          color: $white;
+          font-family: $primary-font;
+          font-size: 20px;
+          font-weight: 700;
+          text-align: center;
+          text-transform: uppercase;
+          outline: none;
+          transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
+
+          &::placeholder {
+            color: rgba(255, 255, 255, 0.25);
+          }
+
+          &:focus {
+            border-color: $accent-color;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 10px rgba(240, 204, 122, 0.3);
+          }
+        }
+      }
+
+      .btn-submit-code {
+        width: 100%;
+        background: $accent-color;
+        border: none;
+        border-radius: 12px;
+        padding: 14px 20px;
+        color: $dark-green;
+        font-family: $primary-font;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background-color 0.2s, transform 0.1s, opacity 0.2s;
+
+        &:hover:not(:disabled) {
+          background: $accent-hover;
+          transform: translateY(-1px);
+        }
+
+        &:active:not(:disabled) {
+          transform: translateY(1px);
+        }
+
+        &:disabled {
+          background: rgba(255, 255, 255, 0.15);
+          color: rgba(255, 255, 255, 0.3);
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
 }
 
 @keyframes goldPulse {

@@ -12,7 +12,63 @@ export default function Card() {
   const [completedLines, setCompletedLines] = useState([]);
   const [celebrationData, setCelebrationData] = useState(null);
 
+  const [codeInputs, setCodeInputs] = useState(Array(6).fill(''));
+  const inputRefs = useRef([]);
+
   const audioContextRef = useRef(null);
+
+  const handleOtpChange = (val, idx) => {
+    const cleanVal = val.toUpperCase().replace(/[^A-Z0-9]/g, '');
+    const newInputs = [...codeInputs];
+    newInputs[idx] = cleanVal.slice(-1); // Keep last char
+    setCodeInputs(newInputs);
+
+    if (cleanVal && idx < 5) {
+      inputRefs.current[idx + 1]?.focus();
+    }
+  };
+
+  const handleOtpKeyDown = (e, idx) => {
+    if (e.key === 'Backspace') {
+      if (!codeInputs[idx] && idx > 0) {
+        const newInputs = [...codeInputs];
+        newInputs[idx - 1] = '';
+        setCodeInputs(newInputs);
+        inputRefs.current[idx - 1]?.focus();
+      } else if (codeInputs[idx]) {
+        const newInputs = [...codeInputs];
+        newInputs[idx] = '';
+        setCodeInputs(newInputs);
+      }
+    }
+  };
+
+  const handleOtpPaste = (e) => {
+    e.preventDefault();
+    const pastedData = e.clipboardData
+      .getData('text')
+      .toUpperCase()
+      .replace(/[^A-Z0-9]/g, '')
+      .slice(0, 6);
+
+    const newInputs = [...codeInputs];
+    for (let i = 0; i < 6; i++) {
+      newInputs[i] = pastedData[i] || '';
+    }
+    setCodeInputs(newInputs);
+
+    const nextFocusIndex = Math.min(pastedData.length, 5);
+    inputRefs.current[nextFocusIndex]?.focus();
+  };
+
+  const handleSubmitCode = (e) => {
+    if (e) e.preventDefault();
+    const code = codeInputs.join('');
+    if (code.length === 6) {
+      navigate(`/cartela/${code}`);
+    }
+  };
+
 
   // Helper to generate a new card
   const generateCard = () => {
@@ -263,6 +319,53 @@ export default function Card() {
   const winsLabel = winsCount === 1 ? 'sorteio' : 'sorteios';
   const winsPlural = winsCount === 1 ? '' : 's';
   const formattedCardNumber = String(cardNumber).padStart(3, '0');
+
+  if (!gameId) {
+    return (
+      <div className="card-container code-entry-container">
+        <button id="btn-cartela-voltar-inicio" className="btn-back" onClick={() => navigate('/')}>
+          ← Sair
+        </button>
+
+        <div className="card-header">
+          <h1>BINGO</h1>
+          <div className="card-number">Entrar no Jogo</div>
+        </div>
+
+        <form className="code-entry-card" onSubmit={handleSubmitCode}>
+          <h2>Código do sorteio</h2>
+          <p>Digite o código de 6 caracteres do sorteio para receber sua cartela:</p>
+
+          <div className="otp-inputs">
+            {codeInputs.map((val, idx) => (
+              <input
+                key={idx}
+                ref={(el) => (inputRefs.current[idx] = el)}
+                type="text"
+                maxLength={1}
+                value={val}
+                onChange={(e) => handleOtpChange(e.target.value, idx)}
+                onKeyDown={(e) => handleOtpKeyDown(e, idx)}
+                onPaste={handleOtpPaste}
+                className="otp-input-box"
+                placeholder="•"
+                autoComplete="off"
+                spellCheck="false"
+              />
+            ))}
+          </div>
+
+          <button
+            type="submit"
+            className="btn-submit-code"
+            disabled={codeInputs.some((c) => !c)}
+          >
+            Acessar cartela
+          </button>
+        </form>
+      </div>
+    );
+  }
 
   return (
     <div className="card-container">

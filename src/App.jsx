@@ -16,6 +16,7 @@ export default function App() {
           <Route path="/sorteio" element={<Setup />} />
           <Route path="/sorteador/:gameId" element={<Caller />} />
           <Route path="/cartela/:gameId" element={<Card />} />
+          <Route path="/cartela" element={<Card />} />
           {/* Fallback to Home */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
