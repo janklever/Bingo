@@ -1,4 +1,5 @@
 // _setup.scss
+@use 'sass:color';
 @use 'variables' as *;
 
 .setup-container {
@@ -109,6 +110,26 @@
     &:hover {
       transform: translateY(-3px);
       box-shadow: 0 14px 36px rgba(240, 204, 122, 0.45);
+    }
+  }
+
+  .btn-secondary-setup {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 14px;
+    padding: 14px 40px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: $primary-font;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    margin-top: 14px;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: $white;
+      border-color: rgba(255, 255, 255, 0.4);
     }
   }
 }

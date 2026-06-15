@@ -3,8 +3,16 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Setup() {
   const navigate = useNavigate();
-  const [gameId] = useState(() => Math.random().toString(36).slice(2, 8).toUpperCase());
+  const [gameId, setGameId] = useState(() => {
+    return localStorage.getItem('game_id') || Math.random().toString(36).slice(2, 8).toUpperCase();
+  });
+  const [isExistingGame, setIsExistingGame] = useState(() => !!localStorage.getItem('game_id'));
   const [qrCodeUrl, setQrCodeUrl] = useState('');
+
+  useEffect(() => {
+    // Save to LocalStorage immediately if not already saved
+    localStorage.setItem('game_id', gameId);
+  }, [gameId]);
 
   useEffect(() => {
     const cu = `${window.location.origin}/cartela/${gameId}`;
@@ -21,6 +29,16 @@ export default function Setup() {
 
   const handleGoToCaller = () => {
     navigate(`/sorteador/${gameId}`);
+  };
+
+  const handleStartNew = () => {
+    const confirm = window.confirm("Deseja iniciar um novo sorteio? O progresso do sorteio anterior será perdido.");
+    if (confirm) {
+      const newId = Math.random().toString(36).slice(2, 8).toUpperCase();
+      setGameId(newId);
+      setIsExistingGame(false);
+      localStorage.setItem('game_id', newId);
+    }
   };
 
   return (
@@ -52,9 +70,17 @@ export default function Setup() {
         Cada participante que escanear receberá uma cartela única e aleatória. Aguarde antes de iniciar.
       </p>
 
-      <button id="btn-iniciar-sorteio" className="btn-start" onClick={handleGoToCaller}>
-        Iniciar sorteio →
-      </button>
+      <div className="setup-actions" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+        <button id="btn-iniciar-sorteio" className="btn-start" onClick={handleGoToCaller}>
+          {isExistingGame ? 'Continuar sorteio →' : 'Iniciar sorteio →'}
+        </button>
+
+        {isExistingGame && (
+          <button id="btn-novo-sorteio" className="btn-secondary-setup" onClick={handleStartNew}>
+            Iniciar um novo
+          </button>
+        )}
+      </div>
     </div>
   );
 }

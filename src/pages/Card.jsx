@@ -11,6 +11,9 @@ export default function Card() {
   const [markedCells, setMarkedCells] = useState([12]);
   const [completedLines, setCompletedLines] = useState([]);
   const [celebrationData, setCelebrationData] = useState(null);
+  const [showInstructionModal, setShowInstructionModal] = useState(false);
+  const hasShownInstructions = useRef(false);
+
 
   const [codeInputs, setCodeInputs] = useState(Array(6).fill(''));
   const inputRefs = useRef([]);
@@ -295,21 +298,25 @@ export default function Card() {
   };
 
   useEffect(() => {
-    const handleBeforeUnload = (e) => {
-      e.preventDefault();
-      e.returnValue = "Deseja sair do jogo? O progresso da sua cartela será perdido.";
-      return e.returnValue;
-    };
-    window.addEventListener('beforeunload', handleBeforeUnload);
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
-  }, []);
+    if (!gameId) {
+      const saved = localStorage.getItem('game_id');
+      if (saved) {
+        navigate(`/cartela/${saved}`, { replace: true });
+      }
+    } else {
+      localStorage.setItem('game_id', gameId);
+    }
+  }, [gameId, navigate]);
 
   const handleGoToHome = () => {
-    const confirmLeave = window.confirm("Deseja sair do jogo? O progresso da sua cartela será perdido.");
-    if (confirmLeave) {
-      navigate('/');
+    navigate('/');
+  };
+
+  const handleChangeCode = () => {
+    const confirm = window.confirm("Deseja trocar o código do sorteio? O progresso da sua cartela atual será perdido.");
+    if (confirm) {
+      localStorage.removeItem('game_id');
+      navigate('/cartela');
     }
   };
 
@@ -371,6 +378,10 @@ export default function Card() {
     <div className="card-container">
       <button id="btn-cartela-voltar-inicio" className="btn-back" onClick={handleGoToHome}>
         ← Voltar
+      </button>
+
+      <button className="btn-change-code" onClick={handleChangeCode}>
+        Trocar código
       </button>
 
       <div className="card-header">
