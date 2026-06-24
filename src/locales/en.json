@@ -2,15 +2,15 @@
   "global": {
     "back": "Back",
     "bingo": "Bingo",
-    "online": "Online",
+    "online": "Virtual",
     "game_code": "Game code",
     "created_by": "Created by"
   },
   "home": {
     "organizer_title": "Organizer",
-    "organizer_desc": "Share the QR Code with participants and start the draw.",
+    "organizer_desc": "Share the QR Code with nearby participants and start the draw.",
     "participant_title": "Participant",
-    "participant_desc": "Scan the QR Code or type the game code to receive your unique card.",
+    "participant_desc": "Scan the QR Code or type the code shown by the organizer to receive your unique card for this local draw.",
     "winner_title": "Winner",
     "winner_desc": "Stay tuned, when you complete a row or column shout: ",
     "winner_bold": "BINGO!",
@@ -22,7 +22,7 @@
     "subtitle": "Scan the QR Code to join",
     "confirm_new": "Do you want to start a new draw? The progress of the previous draw will be lost.",
     "qr_alt": "Card QR Code",
-    "info": "Each scanning participant will receive a unique and random card. Please wait before starting.",
+    "info": "Each scanning participant will receive a unique and random card. This is a virtual game, not an online room: use it with the organizer showing the draw.",
     "btn_continue": "Continue draw →",
     "btn_start": "Start draw →",
     "btn_start_new": "Start a new one"
@@ -37,7 +37,7 @@
     "spinning": "Mixing…",
     "draw_ball": "Draw ball",
     "modal_title": "Join the Game",
-    "modal_desc": "Scan the QR Code below with your phone's camera to receive your card.",
+    "modal_desc": "Scan the QR Code below with your phone's camera to receive your card for this local draw.",
     "copied": "Copied!",
     "copy_link": "Copy link"
   },

@@ -3,9 +3,9 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/52d93949-5ae8-455f-91d0-fb5b51aaddb0/deploy-status)](https://app.netlify.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Um bingo virtual, moderno, open source, estruturado em **React + Vite + SCSS** e 100% responsivo. Perfeito para jogar com amigos, família ou organizar sorteios comunitários.
+Um bingo virtual, moderno, open source, estruturado em **React + Vite + SCSS** e 100% responsivo. Perfeito para sorteios presenciais ou locais com amigos, família e comunidades.
 
-Este projeto foi reestruturado de forma modular para seguir os padrões modernos de engenharia de software: separação completa de estilos SCSS e componentização de páginas. Sincronização em tempo real via **BroadcastChannel** e geração de QR Codes inclusa.
+Este projeto foi reestruturado de forma modular para seguir os padrões modernos de engenharia de software: separação completa de estilos SCSS e componentização de páginas. Ele é virtual, mas **não cria salas online nem conecta jogadores pela internet**; a atualização ao vivo usa **BroadcastChannel** no navegador, e a geração de QR Codes ajuda participantes a abrirem suas cartelas no contexto do sorteio local.
 
 ---
 
@@ -29,7 +29,7 @@ Bingo/
 ## ✨ Funcionalidades
 
 - 👑 **Modo Organizador/Sorteador (`Caller.jsx`, `Setup.jsx`)**:
-  - Geração de código de sala exclusivo e código QR para compartilhamento.
+  - Geração de código de sorteio exclusivo e QR Code para compartilhamento local.
   - Globo virtual animado em SVG para simulação física das pedras.
   - Sorteio aleatório de pedras de 1 a 75 com feedback sonoro integrado.
   - Histórico visual de pedras já sorteadas.
