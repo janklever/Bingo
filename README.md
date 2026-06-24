@@ -1,6 +1,6 @@
 # Bingo 🎯
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/52d93949-5ae8-455f-91d0-fb5b51aaddb0/deploy-status)](https://app.netlify.com)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2a0582d4-d0d7-4f59-a323-bbdd4d2819e6/deploy-status)](https://app.netlify.com/projects/bingo-br/deploys)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Um bingo virtual, moderno, open source, estruturado em **React + Vite + SCSS** e 100% responsivo. Perfeito para sorteios presenciais ou locais com amigos, família e comunidades.
