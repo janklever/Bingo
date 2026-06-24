@@ -2,15 +2,15 @@
   "global": {
     "back": "Volver",
     "bingo": "Bingo",
-    "online": "En línea",
+    "online": "Virtual",
     "game_code": "Código del juego",
     "created_by": "Creado por"
   },
   "home": {
     "organizer_title": "Organizador",
-    "organizer_desc": "Comparte el código QR con los participantes y comienza el sorteo.",
+    "organizer_desc": "Comparte el código QR con los participantes presentes y comienza el sorteo.",
     "participant_title": "Participante",
-    "participant_desc": "Escanea el o escribe el código para recibir tu cartón único.",
+    "participant_desc": "Escanea el código QR o escribe el código mostrado por el organizador para recibir tu cartón de este sorteo local.",
     "winner_title": "Ganador",
     "winner_desc": "Mantente atento, al completar una fila o columna grita: ",
     "winner_bold": "¡BINGO!",
@@ -22,7 +22,7 @@
     "subtitle": "Escanea el código QR para participar",
     "confirm_new": "¿Deseas iniciar un nuevo sorteo? Se perderá el progreso del sorteo anterior.",
     "qr_alt": "Código QR del cartón",
-    "info": "Cada participante que escanee recibirá un cartón único y aleatorio. Espera antes de comenzar.",
+    "info": "Cada participante que escanee recibirá un cartón único y aleatorio. El juego es virtual, pero no es una sala en línea: úsalo con el organizador mostrando el sorteo.",
     "btn_continue": "Continuar sorteo →",
     "btn_start": "Iniciar sorteo →",
     "btn_start_new": "Iniciar uno nuevo"
@@ -37,7 +37,7 @@
     "spinning": "Mezclando…",
     "draw_ball": "Sortear bola",
     "modal_title": "Entrar al juego",
-    "modal_desc": "Escanea el código QR de abajo con la cámara de tu celular para recibir tu cartón.",
+    "modal_desc": "Escanea el código QR de abajo con la cámara de tu celular para recibir tu cartón en este sorteo local.",
     "copied": "¡Copiado!",
     "copy_link": "Copiar enlace"
   },
